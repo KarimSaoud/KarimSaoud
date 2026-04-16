@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Percorso Formativo | KarimSaoud</title>
+    <meta
+      name="description"
+      content="Pagina dedicata al percorso formativo del progetto KarimSaoud."
+    />
+    <link rel="icon" type="image/png" href="../KS.png" />
+    <style>
+      :root {
+        --bg: #f8f5ef;
+        --surface: rgba(255, 255, 255, 0.84);
+        --surface-strong: rgba(255, 255, 255, 0.96);
+        --line: rgba(42, 34, 27, 0.1);
+        --text: #1f1914;
+        --muted: #6d635b;
+        --shadow: 0 18px 40px rgba(42, 34, 27, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(145, 118, 90, 0.08), transparent 24%),
+          linear-gradient(180deg, #fdfbf7 0%, var(--bg) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page-shell {
+        width: min(calc(100% - 2rem), 960px);
+        margin: 0 auto;
+        padding: 3rem 0 2rem;
+      }
+
+      .page-hero {
+        margin-bottom: 1.8rem;
+        text-align: center;
+      }
+
+      h1,
+      h3 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+        letter-spacing: -0.05em;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 8vw, 5.6rem);
+        line-height: 0.95;
+        font-weight: 650;
+      }
+
+      h3 {
+        font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+        line-height: 1.05;
+        font-weight: 600;
+      }
+
+      .company,
+      .location,
+      .period {
+        margin: 0;
+        color: rgb(255, 255, 255);
+        line-height: 1.7;
+      }
+
+      .period {
+        display: grid;
+        gap: 0.05rem;
+        text-align: center;
+      }
+
+      .period-dates,
+      .period-duration {
+        display: block;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: 1.2rem;
+        padding: 1.15rem 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgb(43, 101, 197);
+        box-shadow: var(--shadow);
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          background-color 160ms ease;
+      }
+
+      .timeline-item:hover,
+      .timeline-item:focus-within {
+        transform: translateY(-2px);
+        border-color: rgba(43, 101, 197, 0.48);
+        background: rgb(43, 101, 197);
+      }
+
+      .timeline-meta {
+        display: grid;
+        align-content: start;
+        gap: 0.6rem;
+        justify-items: center;
+      }
+
+      .course-mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 120px;
+        min-height: 52px;
+        padding: 0 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: rgb(255, 255, 255);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .school-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        min-height: 52px;
+      }
+
+      .school-logo img {
+        display: block;
+        max-width: 118px;
+        max-height: 42px;
+        width: auto;
+        height: auto;
+      }
+
+      .timeline-content {
+        min-width: 0;
+      }
+
+      .company {
+        margin-top: 0.55rem;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+      }
+
+      .location {
+        margin-top: 0.25rem;
+      }
+
+      .site-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1.2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .site-footer a {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+      }
+
+      @media (max-width: 760px) {
+        .page-shell {
+          width: min(calc(100% - 1rem), 960px);
+          padding: 1.5rem 0 1.5rem;
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+          gap: 0.9rem;
+          padding: 1rem;
+          border-radius: 18px;
+        }
+
+        .timeline-content {
+          text-align: center;
+        }
+
+        .site-footer {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .page-shell {
+          width: min(calc(100% - 0.75rem), 960px);
+          padding: 1rem 0 1.25rem;
+        }
+
+        h1 {
+          font-size: clamp(2.2rem, 12vw, 3.3rem);
+        }
+
+        .timeline-item {
+          gap: 0.8rem;
+          padding: 0.95rem;
+        }
+
+        .period,
+        .location,
+        .company {
+          font-size: 0.92rem;
+          line-height: 1.5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="page-hero">
+        <h1>Percorso Formativo</h1>
+      </header>
+
+      <main>
+        <section class="timeline" aria-label="Percorso formativo">
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo IVASS">
+                <img src="./logos/ivass.png" alt="Logo IVASS" />
+              </span>
+              <span class="period">
+                <span class="period-dates">[inizio] - [fine]</span>
+                <span class="period-duration">[durata]</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Formazione per consulente assicurativo</h3>
+              <p class="company">Percorso propedeutico all'iscrizione nella sezione E del RUI</p>
+              <p class="location">Riferimento IVASS · Italia</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Volta Institute">
+                <img src="./logos/voltaistitute.png" alt="Logo Volta Institute" />
+              </span>
+              <span class="period">
+                <span class="period-dates">24/10/2020 - 24/10/2022</span>
+                <span class="period-duration">2 anni</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Sicurezza Informatica</h3>
+              <p class="company">Volta Institute</p>
+              <p class="location">Online / Italia</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Ministero dell'Istruzione">
+                <img src="./logos/minsteroistruzione.png" alt="Logo Ministero dell'Istruzione" />
+              </span>
+              <span class="period">
+                <span class="period-dates">[inizio] - [fine]</span>
+                <span class="period-duration">[durata]</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Chimica</h3>
+              <p class="company">Universita degli Studi di Firenze</p>
+              <p class="location">Via della Lastruccia 3, Sesto Fiorentino, Firenze</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Ministero dell'Istruzione">
+                <img src="./logos/minsteroistruzione.png" alt="Logo Ministero dell'Istruzione" />
+              </span>
+              <span class="period">
+                <span class="period-dates">[inizio] - [fine]</span>
+                <span class="period-duration">[durata]</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Servizi per la Sanita e l'Assistenza Sociale</h3>
+              <p class="company">I.I.S. Sassetti Peruzzi</p>
+              <p class="location">Via San Donato 46/48, Firenze</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo CFP">
+                <img src="./logos/cfp.png" alt="Logo CFP Don Giulio Facibeni" />
+              </span>
+              <span class="period">
+                <span class="period-dates">[inizio] - [fine]</span>
+                <span class="period-duration">[durata]</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Termoidraulica</h3>
+              <p class="company">CFP Don Giulio Facibeni</p>
+              <p class="location">Via Don Giulio Facibeni 13, Firenze</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Ministero dell'Istruzione">
+                <img src="./logos/minsteroistruzione.png" alt="Logo Ministero dell'Istruzione" />
+              </span>
+              <span class="period">
+                <span class="period-dates">[inizio] - [fine]</span>
+                <span class="period-duration">[durata]</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Liceo Artistico</h3>
+              <p class="company">Istituto di Istruzione Superiore Leon battista Alberti</p>
+              <p class="location">Via San Gallo 68, Firenze</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Ministero dell'Istruzione">
+                <img src="./logos/minsteroistruzione.png" alt="Logo Ministero dell'Istruzione" />
+              </span>
+              <span class="period">
+                <span class="period-dates">2009 - 2014</span>
+                <span class="period-duration">5 anni</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>AFM · Amministrazione, Finanza e Marketing</h3>
+              <p class="company">Istituto di Istruzione Superiore Giuseppe Peano</p>
+              <p class="location">Via Andrea del Sarto 6A, Firenze</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Ministero dell'Istruzione">
+                <img src="./logos/minsteroistruzione.png" alt="Logo Ministero dell'Istruzione" />
+              </span>
+              <span class="period">
+                <span class="period-dates">14/09/2006 - 13/06/2009</span>
+                <span class="period-duration">3 anni</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Scuola Secondaria di I grado</h3>
+              <p class="company">Scuola Media Statale Botticelli-Puccini</p>
+              <p class="location">Via del Larione 33, Firenze</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Ministero dell'Istruzione">
+                <img src="./logos/minsteroistruzione.png" alt="Logo Ministero dell'Istruzione" />
+              </span>
+              <span class="period">
+                <span class="period-dates">17/09/2001 - 10/06/2006</span>
+                <span class="period-duration">5 anni</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Scuola Primaria Kassel</h3>
+              <p class="location">Via Svizzera 7/9, Firenze</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="school-logo" aria-label="Logo Ministero dell'Istruzione">
+                <img src="./logos/minsteroistruzione.png" alt="Logo Ministero dell'Istruzione" />
+              </span>
+              <span class="period">
+                <span class="period-dates">15/09/1998 - 30/06/2001</span>
+                <span class="period-duration">3 anni</span>
+              </span>
+            </div>
+            <div class="timeline-content">
+              <h3>Scuola dell'infanzia</h3>
+              <p class="company">Scuola Primaria Kassel</p>
+              <p class="location">Via Svizzera 7/9, Firenze</p>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a href="../index.html">KarimSaoud</a>
+        <div class="footer-links">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../cookie.html">Cookie Policy</a>
+          <a href="../note-legali.html">Note legali</a>
+          <a href="../accessibilita.html">Accessibilita</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

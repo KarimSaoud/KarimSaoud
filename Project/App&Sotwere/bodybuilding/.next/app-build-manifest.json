@@ -1,0 +1,47 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-db0a529a99835594.js",
+      "static/chunks/4bd1b696-1bbe00825af7c92a.js",
+      "static/chunks/684-7c7e48de743f40f8.js",
+      "static/chunks/main-app-3cec59b758de8db0.js",
+      "static/chunks/app/_not-found/page-fb8e714d36383121.js"
+    ],
+    "/manifest.webmanifest/route": [
+      "static/chunks/webpack-db0a529a99835594.js",
+      "static/chunks/4bd1b696-1bbe00825af7c92a.js",
+      "static/chunks/684-7c7e48de743f40f8.js",
+      "static/chunks/main-app-3cec59b758de8db0.js",
+      "static/chunks/app/manifest.webmanifest/route-25d2d362093ef2b3.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-db0a529a99835594.js",
+      "static/chunks/4bd1b696-1bbe00825af7c92a.js",
+      "static/chunks/684-7c7e48de743f40f8.js",
+      "static/chunks/main-app-3cec59b758de8db0.js",
+      "static/css/32b8f1cd8f65615f.css",
+      "static/chunks/app/layout-103cb1a2300ee309.js"
+    ],
+    "/apple-icon/route": [
+      "static/chunks/webpack-db0a529a99835594.js",
+      "static/chunks/4bd1b696-1bbe00825af7c92a.js",
+      "static/chunks/684-7c7e48de743f40f8.js",
+      "static/chunks/main-app-3cec59b758de8db0.js",
+      "static/chunks/app/apple-icon/route-724b9894f711c5b2.js"
+    ],
+    "/icon/route": [
+      "static/chunks/webpack-db0a529a99835594.js",
+      "static/chunks/4bd1b696-1bbe00825af7c92a.js",
+      "static/chunks/684-7c7e48de743f40f8.js",
+      "static/chunks/main-app-3cec59b758de8db0.js",
+      "static/chunks/app/icon/route-98a297e3a630df6f.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-db0a529a99835594.js",
+      "static/chunks/4bd1b696-1bbe00825af7c92a.js",
+      "static/chunks/684-7c7e48de743f40f8.js",
+      "static/chunks/main-app-3cec59b758de8db0.js",
+      "static/chunks/app/page-02a2aac47be442b0.js"
+    ]
+  }
+}

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consulenza | Karim Saoud</title>
+    <meta
+      name="description"
+      content="Pagina consulenza con profilo, metodo, contatti e aree dedicate a protezione, previdenza, risparmio e investimento."
+    />
+    <link rel="icon" type="image/png" href="KS.png" />
+    <style>
+      :root {
+        --bg: rgb(23, 63, 122);
+        --bg-soft: rgb(28, 71, 136);
+        --panel: rgba(18, 53, 107, 0.82);
+        --panel-strong: rgba(28, 71, 136, 0.96);
+        --ink: rgb(255, 255, 255);
+        --muted: rgba(255, 255, 255, 0.78);
+        --line: rgba(255, 255, 255, 0.16);
+        --line-strong: rgba(255, 255, 255, 0.3);
+        --accent: rgb(220, 110, 45);
+        --accent-soft: rgba(220, 110, 45, 0.22);
+        --shadow: 0 24px 60px rgba(8, 24, 52, 0.28);
+        --radius-xl: 34px;
+        --radius-lg: 26px;
+        --radius-md: 18px;
+        --container: min(1160px, calc(100vw - 32px));
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 22%),
+          radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.06), transparent 28%),
+          linear-gradient(180deg, rgb(23, 63, 122) 0%, rgb(28, 71, 136) 55%, rgb(20, 55, 110) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page-shell {
+        position: relative;
+        overflow: clip;
+      }
+
+      .container {
+        width: var(--container);
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(18px);
+        background: rgba(252, 249, 243, 0.72);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+      }
+
+      .nav-wrap {
+        min-height: 84px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-mark {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #294439, #45695a);
+        color: #f9f4ec;
+        font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        box-shadow: 0 18px 40px rgba(41, 68, 57, 0.22);
+      }
+
+      .brand-copy {
+        display: grid;
+      }
+
+      .brand-copy strong {
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .brand-copy small {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      .site-nav a {
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: color 220ms ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible {
+        color: var(--ink);
+      }
+
+      .key-entry {
+        width: 48px;
+        height: 48px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 16px;
+        border: 1px solid rgba(20, 38, 31, 0.1);
+        background: rgba(255, 252, 246, 0.8);
+        box-shadow: 0 14px 30px rgba(34, 31, 24, 0.08);
+      }
+
+      .key-entry svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: #294439;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .nav-toggle {
+        display: none;
+        width: 48px;
+        height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 252, 246, 0.8);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+      }
+
+      .nav-toggle span {
+        width: 18px;
+        height: 1.5px;
+        border-radius: 999px;
+        background: var(--ink);
+      }
+
+      .hero {
+        padding: 72px 0 32px;
+      }
+
+      .hero-stage {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section-card,
+      .area-card,
+      .contact-card {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius-xl);
+      }
+
+      .hero-main {
+        position: relative;
+        padding: 34px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at top right, rgba(217, 179, 143, 0.32), transparent 24%),
+          linear-gradient(135deg, rgba(255, 252, 246, 0.95), rgba(247, 241, 232, 0.88));
+      }
+
+      .hero-main::after {
+        content: "";
+        position: absolute;
+        right: -40px;
+        bottom: -48px;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(69, 105, 90, 0.14), transparent 64%);
+      }
+
+      .eyebrow {
+        margin: 0 0 16px;
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: clamp(3.4rem, 9vw, 6.8rem);
+        line-height: 0.92;
+        font-weight: 600;
+      }
+
+      .hero-main h1 span {
+        display: block;
+        color: #294439;
+      }
+
+      .hero-text {
+        max-width: 35rem;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 1.03rem;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0.9rem 1.2rem;
+        border-radius: 999px;
+        font-weight: 700;
+        transition:
+          transform 180ms ease,
+          background-color 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: #294439;
+        color: #f9f4ec;
+        border: 1px solid #294439;
+      }
+
+      .btn-secondary {
+        background: rgba(255, 252, 246, 0.74);
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .hero-side {
+        padding: 24px;
+        display: grid;
+        gap: 16px;
+        align-content: start;
+      }
+
+      .side-stat {
+        padding: 16px 18px;
+        border: 1px solid rgba(20, 38, 31, 0.08);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .side-stat strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.2rem;
+      }
+
+      .side-stat span,
+      .side-note {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .overview {
+        padding: 10px 0 28px;
+      }
+
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .section-card {
+        padding: 24px;
+      }
+
+      .section-card h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        line-height: 0.98;
+      }
+
+      .section-card p {
+        margin: 14px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .section-anchor {
+        display: inline-flex;
+        margin-top: 18px;
+        color: #294439;
+        font-weight: 700;
+      }
+
+      .areas {
+        padding: 34px 0;
+      }
+
+      .areas-shell {
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: rgba(18, 53, 107, 0.72);
+        box-shadow: var(--shadow);
+      }
+
+      .areas-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+
+      .areas-head h2 {
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        line-height: 0.96;
+      }
+
+      .areas-head p {
+        max-width: 33rem;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .areas-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .area-card {
+        position: relative;
+        padding: 22px;
+        overflow: hidden;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .area-card::after {
+        content: "Apri";
+        position: absolute;
+        right: 22px;
+        top: 22px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .area-card:hover,
+      .area-card:focus-visible {
+        transform: translateY(-4px);
+        border-color: var(--line-strong);
+        background: var(--panel-strong);
+      }
+
+      .area-icon {
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 16px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(220, 110, 45, 0.22));
+      }
+
+      .area-icon svg {
+        width: 28px;
+        height: 28px;
+        fill: none;
+        stroke: rgb(255, 255, 255);
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .area-card h3 {
+        font-size: 2rem;
+        line-height: 1;
+        color: var(--accent);
+      }
+
+      .area-card p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .method-contact {
+        padding: 0 0 56px;
+      }
+
+      .method-contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.92fr);
+        gap: 20px;
+        align-items: start;
+      }
+
+      .method-board,
+      .contact-card {
+        padding: 28px;
+      }
+
+      .method-board {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: rgba(255, 252, 246, 0.7);
+        box-shadow: var(--shadow);
+      }
+
+      .method-board h2,
+      .contact-card h2 {
+        font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+        line-height: 0.98;
+      }
+
+      .method-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .method-step {
+        display: grid;
+        grid-template-columns: 54px minmax(0, 1fr);
+        gap: 14px;
+        padding: 16px;
+        border: 1px solid rgba(20, 38, 31, 0.08);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.34);
+      }
+
+      .step-no {
+        width: 54px;
+        height: 54px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: #294439;
+        color: #f9f4ec;
+        font-weight: 800;
+      }
+
+      .method-step p,
+      .contact-card p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .contact-card {
+        background:
+          radial-gradient(circle at top right, rgba(217, 179, 143, 0.22), transparent 28%),
+          rgba(255, 252, 246, 0.88);
+      }
+
+      .contact-stack {
+        display: grid;
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .contact-item {
+        padding: 14px 16px;
+        border: 1px solid rgba(20, 38, 31, 0.08);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .contact-item span {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .contact-item a {
+        font-weight: 700;
+      }
+
+      .site-footer {
+        padding: 0 0 28px;
+      }
+
+      .footer-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 14px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .hero-stage,
+        .overview-grid,
+        .method-contact-grid,
+        .areas-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .areas-head {
+          display: grid;
+        }
+
+        .site-nav {
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .container {
+          width: min(calc(100vw - 20px), 1160px);
+        }
+
+        .nav-wrap {
+          gap: 12px;
+          min-height: 74px;
+        }
+
+        .site-nav {
+          display: none;
+        }
+
+        .nav-toggle {
+          display: inline-flex;
+        }
+
+        .hero {
+          padding-top: 34px;
+        }
+
+        .hero-main,
+        .hero-side,
+        .section-card,
+        .areas-shell,
+        .method-board,
+        .contact-card {
+          padding: 20px;
+          border-radius: 24px;
+        }
+
+        .method-step {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <main>
+        <section class="areas" id="aree">
+          <div class="container areas-shell">
+            <div class="areas-grid">
+              <a class="area-card" href="protezione.html">
+                <div class="area-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64">
+                    <path d="M32 8l18 7v13c0 12-7 22-18 28C21 50 14 40 14 28V15l18-7z" />
+                    <path d="M24 31l6 6 11-13" />
+                  </svg>
+                </div>
+                <h3>Protezione</h3>
+                <p>TCM = Premorienza. LTC = Non autosufficienza, invalidita. Infortuni = Morbilita, malattia, invalidita. ITT = Perdita reddito temporanea (disoccupazione). Dread Disease = Gravi patologie.</p>
+              </a>
+
+              <a class="area-card" href="previdenza.html">
+                <div class="area-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64">
+                    <path d="M18 45h28" />
+                    <path d="M20 45V23l12-10 12 10v22" />
+                    <path d="M28 45V32h8v13" />
+                  </svg>
+                </div>
+                <h3>Previdenza</h3>
+                <p>TFR = trattamento fine rapporto, Fondo Pensione, PIP = Piano Individuale Pensionistico, FIP = Fondo Individuale Pensionistico.</p>
+              </a>
+
+              <a class="area-card" href="risparmio.html">
+                <div class="area-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64">
+                    <path d="M21 23c0-5 4-9 11-9s11 4 11 9-4 8-11 8-11 3-11 8 4 9 11 9 11-4 11-9" />
+                    <path d="M32 10v44" />
+                  </svg>
+                </div>
+                <h3>Risparmio</h3>
+                <p>Percorsi graduali per dare struttura all'accantonamento e ordine agli obiettivi futuri.</p>
+              </a>
+
+              <a class="area-card" href="investimento.html">
+                <div class="area-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64">
+                    <path d="M16 44l11-11 8 8 13-15" />
+                    <path d="M38 26h10v10" />
+                    <path d="M14 52h36" />
+                  </svg>
+                </div>
+                <h3>Investimento</h3>
+                <p>Strumenti di liquidita, strumenti obbligazionari, fondi comuni di investimento (UCITS), ETF / ETC / ETN, gestioni patrimoniali, prodotti assicurativi finanziari (IBIPs), prodotti strutturati, investimenti immobiliari, private markets, materie prime, derivati, investimenti ESG / sostenibili, investimenti digitali, PIR (strumenti fiscalmente incentivati italiani), crowdfunding finanziario, strumenti multi-asset.</p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="method-contact">
+          <div class="container method-contact-grid">
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-wrap">
+          <a href="../index.html">KarimSaoud</a>
+          <div class="footer-links">
+            <a href="../privacy.html">Privacy Policy</a>
+            <a href="../cookie.html">Cookie Policy</a>
+            <a href="../note-legali.html">Note legali</a>
+            <a href="../accessibilita.html">Accessibilita</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,580 @@
+0 HEAD
+1 SOUR Family Echo
+2 WWW https://www.familyecho.com/
+1 FILE Saoud-Panichi
+1 DATE 9 APR 2026
+1 DEST ANSTFILE
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 SUBM @I3@
+2 NAME Karim Saoud
+1 SUBN
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Mohamed Lakhdar /Saoud/
+2 GIVN Mohamed Lakhdar
+2 SURN Saoud
+1 SEX M
+1 BIRT
+2 DATE 8 MAY 1960
+1 FAMS @F1@
+1 FAMC @F2@
+0 @I2@ INDI
+1 NAME Giacinta /Panichi/
+2 GIVN Giacinta
+2 SURN Panichi
+1 SEX F
+1 BIRT
+2 DATE 31 OCT 1960
+1 FAMS @F1@
+1 FAMC @F3@
+0 @I3@ INDI
+1 NAME Karim /Saoud/
+2 GIVN Karim
+2 SURN Saoud
+1 SEX M
+1 BIRT
+2 DATE 17 JUN 1995
+1 FAMS @F4@
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Samir /Saoud/
+2 GIVN Samir
+2 SURN Saoud
+1 SEX M
+1 BIRT
+2 DATE 27 JUN 1993
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Renzo /Panichi/
+2 GIVN Renzo
+2 SURN Panichi
+1 SEX M
+1 BIRT
+2 DATE 5 MAY 1920
+1 DEAT Y
+2 DATE 9 APR 1998
+1 FAMS @F3@
+1 FAMC @F5@
+0 @I6@ INDI
+1 NAME Rita /Luci/
+2 GIVN Rita
+2 SURN Luci
+1 SEX F
+1 BIRT
+2 DATE 12 MAY 1921
+1 DEAT Y
+2 DATE JUN 2015
+1 FAMS @F3@
+1 FAMC @F6@
+0 @I7@ INDI
+1 NAME Faustino /Luci/
+2 GIVN Faustino
+2 SURN Luci
+1 SEX M
+1 DEAT Y
+1 FAMS @F6@
+0 @I8@ INDI
+1 NAME Francesca /Frosali/
+2 GIVN Francesca
+2 SURN Frosali
+1 SEX F
+1 FAMS @F6@
+0 @I9@ INDI
+1 NAME Francesco /Panichi/
+2 GIVN Francesco
+2 SURN Panichi
+1 SEX M
+1 BIRT
+2 DATE 11 JUL 1958
+1 FAMC @F3@
+0 @I10@ INDI
+1 NAME Lucia Maria /Panichi/
+2 GIVN Lucia Maria
+2 SURN Panichi
+1 SEX F
+1 BIRT
+2 DATE 5 MAY 1957
+1 FAMS @F7@
+1 FAMC @F3@
+0 @I11@ INDI
+1 NAME Damiano /Panichi/
+2 GIVN Damiano
+2 SURN Panichi
+2 _MARNM Panichi
+1 SEX M
+1 BIRT
+2 DATE 1879
+1 DEAT Y
+1 FAMS @F5@
+1 FAMC @F8@
+0 @I12@ INDI
+1 NAME Maria /Mazzoni/
+2 GIVN Maria
+2 SURN Mazzoni
+2 _MARNM Mazzoni
+1 SEX F
+1 DEAT Y
+1 FAMS @F5@
+0 @I13@ INDI
+1 NAME Maila /Hoffmann/
+2 GIVN Maila
+2 SURN Hoffmann
+2 _MARNM Hoffmann
+1 SEX F
+1 BIRT
+2 DATE 11 OCT 1993
+1 FAMS @F4@
+1 FAMC @F9@
+0 @I14@ INDI
+1 NAME Roberto /Hoffmann/
+2 GIVN Roberto
+2 SURN Hoffmann
+2 _MARNM Hoffmann
+1 SEX M
+1 BIRT
+2 DATE 9 FEB 1946
+1 FAMS @F9@
+1 FAMC @F10@
+0 @I15@ INDI
+1 NAME Gina /Ghaleb/
+2 GIVN Gina
+2 SURN Ghaleb
+2 _MARNM Ghaleb
+1 SEX F
+1 BIRT
+2 DATE 7 NOV 1957
+1 FAMS @F9@
+1 FAMC @F11@
+0 @I16@ INDI
+1 NAME Michaela /Hoffmann/
+2 GIVN Michaela
+2 SURN Hoffmann
+1 SEX F
+1 BIRT
+2 DATE 5 FEB 1996
+1 FAMS @F12@
+1 FAMC @F9@
+0 @I17@ INDI
+1 NAME Arlind /Bardaj/
+2 GIVN Arlind
+2 SURN Bardaj
+2 _MARNM Bardaj
+1 SEX M
+1 BIRT
+2 DATE 26 JAN 1988
+1 FAMS @F12@
+0 @I18@ INDI
+1 NAME Rhea /Bardaj Hoffmann/
+2 GIVN Rhea
+2 SURN Bardaj Hoffmann
+1 SEX F
+1 BIRT
+2 DATE 25 JUL 2021
+1 FAMC @F12@
+0 @I19@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 SEX M
+1 FAMS @F2@
+0 @I20@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 SEX F
+1 FAMS @F2@
+0 @I21@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 SEX M
+1 FAMC @F2@
+0 @I22@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 FAMC @F2@
+0 @I23@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 FAMC @F2@
+0 @I24@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 FAMC @F2@
+0 @I25@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 FAMC @F2@
+0 @I26@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 FAMC @F2@
+0 @I27@ INDI
+1 NAME /Saoud/
+2 SURN Saoud
+2 _MARNM Saoud
+1 FAMC @F2@
+1 FAMC @F13@
+2 PEDI foster
+0 @I28@ INDI
+1 NAME
+1 SEX M
+1 FAMS @F13@
+1 FAMS @F14@
+0 @I29@ INDI
+1 NAME
+1 SEX F
+1 FAMS @F14@
+0 @I30@ INDI
+1 NAME Iris /Bardaj Hoffmann/
+2 GIVN Iris
+2 SURN Bardaj Hoffmann
+2 _MARNM Bardaj Hoffmann
+1 SEX F
+1 BIRT
+2 DATE 29 JAN 2025
+1 FAMC @F12@
+0 @I31@ INDI
+1 NAME Danilo /Sponticcia/
+2 GIVN Danilo
+2 SURN Sponticcia
+1 SEX M
+1 BIRT
+2 DATE JAN 1959
+1 DEAT Y
+2 DATE 2009
+1 FAMS @F7@
+0 @I32@ INDI
+1 NAME Raul /Panichi/
+2 GIVN Raul
+2 SURN Panichi
+1 SEX M
+1 DEAT Y
+2 DATE 1957
+1 FAMS @F15@
+1 FAMC @F5@
+0 @I33@ INDI
+1 NAME Gina /Giani/
+2 GIVN Gina
+2 SURN Giani
+1 SEX F
+1 FAMS @F15@
+0 @I34@ INDI
+1 NAME Martano /Panichi/
+2 GIVN Martano
+2 SURN Panichi
+1 SEX M
+1 DEAT Y
+1 NOTE Bio notes: Nome derivato dal nome di 7n ciclista
+1 FAMS @F16@
+1 FAMC @F15@
+0 @I35@ INDI
+1 NAME Marcello /Panichi/
+2 GIVN Marcello
+2 SURN Panichi
+1 SEX M
+1 DEAT Y
+1 FAMS @F17@
+1 FAMS @F19@
+1 FAMC @F15@
+0 @I36@ INDI
+1 NAME Mauro /Panichi/
+2 GIVN Mauro
+2 SURN Panichi
+1 SEX M
+1 DEAT Y
+1 FAMS @F18@
+1 FAMC @F15@
+0 @I37@ INDI
+1 NAME Lucia /Mori/
+2 GIVN Lucia
+2 SURN Mori
+1 SEX F
+1 FAMS @F16@
+0 @I38@ INDI
+1 NAME Federico /Panichi/
+2 GIVN Federico
+2 SURN Panichi
+1 SEX M
+1 FAMC @F16@
+0 @I39@ INDI
+1 NAME Lorenzo /Panichi/
+2 GIVN Lorenzo
+2 SURN Panichi
+1 SEX M
+1 FAMC @F16@
+0 @I40@ INDI
+1 NAME Maria /Farsetti/
+2 GIVN Maria
+2 SURN Farsetti
+1 SEX F
+1 FAMS @F17@
+0 @I41@ INDI
+1 NAME Matteo
+2 GIVN Matteo
+1 SEX M
+1 FAMC @F19@
+0 @I42@ INDI
+1 NAME Elisa
+2 GIVN Elisa
+1 SEX F
+1 FAMC @F19@
+0 @I43@ INDI
+1 NAME Giacomo
+2 GIVN Giacomo
+1 FAMC @F17@
+0 @I44@ INDI
+1 NAME Gaetano /Panichi/
+2 GIVN Gaetano
+2 SURN Panichi
+1 SEX M
+1 DEAT Y
+1 FAMS @F8@
+0 @I45@ INDI
+1 NAME Regina /Braccini/
+2 GIVN Regina
+2 SURN Braccini
+1 SEX F
+1 DEAT Y
+1 FAMS @F8@
+0 @I46@ INDI
+1 NAME Anna
+2 GIVN Anna
+1 SEX F
+1 FAMS @F18@
+0 @I47@ INDI
+1 NAME Aldo /Luci/
+2 GIVN Aldo
+2 SURN Luci
+1 SEX M
+1 FAMS @F20@
+1 FAMC @F6@
+0 @I48@ INDI
+1 NAME Fosca /Maggiorelli/
+2 GIVN Fosca
+2 SURN Maggiorelli
+1 SEX F
+1 FAMS @F20@
+0 @I49@ INDI
+1 NAME Nella /Luci/
+2 GIVN Nella
+2 SURN Luci
+1 SEX F
+1 FAMC @F6@
+0 @I50@ INDI
+1 NAME Dora /Luci/
+2 GIVN Dora
+2 SURN Luci
+2 _MARNM Luci
+1 SEX F
+1 FAMS @F21@
+1 FAMC @F6@
+0 @I51@ INDI
+1 NAME Amelio /Luci/
+2 GIVN Amelio
+2 SURN Luci
+2 _MARNM Luci
+1 SEX M
+1 FAMS @F21@
+0 @I52@ INDI
+1 NAME Giulietta (suor Emanuela) /Luci/
+2 GIVN Giulietta (suor Emanuela)
+2 SURN Luci
+2 _MARNM Luci
+1 SEX F
+1 FAMC @F21@
+0 @I53@ INDI
+1 NAME Marisa /Luci/
+2 GIVN Marisa
+2 SURN Luci
+2 _MARNM Luci
+1 SEX F
+1 FAMC @F20@
+0 @I54@ INDI
+1 NAME Alda /Luci/
+2 GIVN Alda
+2 SURN Luci
+2 _MARNM Luci
+1 SEX F
+1 FAMS @F22@
+1 FAMC @F20@
+0 @I55@ INDI
+1 NAME Francesco /Ferrini/
+2 GIVN Francesco
+2 SURN Ferrini
+2 _MARNM Ferrini
+1 SEX M
+1 FAMS @F22@
+0 @I56@ INDI
+1 NAME Pietro /Ferrini/
+2 GIVN Pietro
+2 SURN Ferrini
+2 _MARNM Ferrini
+1 SEX M
+1 FAMC @F22@
+0 @I57@ INDI
+1 NAME Marco /Ferrini/
+2 GIVN Marco
+2 SURN Ferrini
+2 _MARNM Ferrini
+1 FAMC @F22@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+1 MARR
+2 DATE 22 APR 1995
+2 PLAC Firenze
+1 DIV
+2 DATE JUL 2004
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F2@ FAM
+1 HUSB @I19@
+1 WIFE @I20@
+1 CHIL @I1@
+1 CHIL @I21@
+1 CHIL @I22@
+1 CHIL @I23@
+1 CHIL @I24@
+1 CHIL @I25@
+1 CHIL @I26@
+1 CHIL @I27@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F3@ FAM
+1 HUSB @I5@
+1 WIFE @I6@
+1 CHIL @I2@
+1 CHIL @I9@
+1 CHIL @I10@
+1 MARR
+2 DATE AUG 1956
+2 PLAC Fiera di Primiera
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F4@ FAM
+1 HUSB @I3@
+1 WIFE @I13@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F5@ FAM
+1 HUSB @I11@
+1 WIFE @I12@
+1 CHIL @I5@
+1 CHIL @I32@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F6@ FAM
+1 HUSB @I7@
+1 WIFE @I8@
+1 CHIL @I6@
+1 CHIL @I47@
+1 CHIL @I49@
+1 CHIL @I50@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F7@ FAM
+1 HUSB @I31@
+1 WIFE @I10@
+1 EVEN
+2 TYPE Relationship
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F8@ FAM
+1 HUSB @I44@
+1 WIFE @I45@
+1 CHIL @I11@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F9@ FAM
+1 HUSB @I14@
+1 WIFE @I15@
+1 CHIL @I13@
+1 CHIL @I16@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F10@ FAM
+1 CHIL @I14@
+1 _CURRENT N
+1 _PRIMARY N
+0 @F11@ FAM
+1 CHIL @I15@
+1 _CURRENT N
+1 _PRIMARY N
+0 @F12@ FAM
+1 HUSB @I17@
+1 WIFE @I16@
+1 CHIL @I18@
+1 CHIL @I30@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F13@ FAM
+1 HUSB @I28@
+1 CHIL @I27@
+0 @F14@ FAM
+1 HUSB @I28@
+1 WIFE @I29@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F15@ FAM
+1 HUSB @I32@
+1 WIFE @I33@
+1 CHIL @I34@
+1 CHIL @I35@
+1 CHIL @I36@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F16@ FAM
+1 HUSB @I34@
+1 WIFE @I37@
+1 CHIL @I38@
+1 CHIL @I39@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F17@ FAM
+1 HUSB @I35@
+1 WIFE @I40@
+1 CHIL @I43@
+1 _CURRENT N
+1 _PRIMARY N
+0 @F18@ FAM
+1 HUSB @I36@
+1 WIFE @I46@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F19@ FAM
+1 HUSB @I35@
+1 CHIL @I41@
+1 CHIL @I42@
+1 _CURRENT N
+1 _PRIMARY N
+0 @F20@ FAM
+1 HUSB @I47@
+1 WIFE @I48@
+1 CHIL @I53@
+1 CHIL @I54@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F21@ FAM
+1 HUSB @I51@
+1 WIFE @I50@
+1 CHIL @I52@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F22@ FAM
+1 HUSB @I55@
+1 WIFE @I54@
+1 CHIL @I56@
+1 CHIL @I57@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 TRLR

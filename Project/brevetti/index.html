@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brevetti | KarimSaoud</title>
+    <meta
+      name="description"
+      content="Sezione dedicata ai brevetti all'interno dell'hub Project di Karim Saoud."
+    />
+    <link rel="icon" type="image/png" href="../../KS.png" />
+    <style>
+      :root {
+        --bg: #fbfaf7;
+        --surface: rgba(255, 255, 255, 0.88);
+        --surface-strong: rgba(255, 255, 255, 0.96);
+        --border: rgba(20, 20, 20, 0.12);
+        --border-strong: rgba(20, 20, 20, 0.18);
+        --text: #171717;
+        --muted: #66625c;
+        --shadow: 0 20px 44px rgba(18, 18, 18, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 14% 0%, rgba(223, 120, 92, 0.08), transparent 24%),
+          radial-gradient(circle at 88% 12%, rgba(111, 149, 137, 0.08), transparent 20%),
+          linear-gradient(180deg, #fffdfa 0%, var(--bg) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(calc(100% - 2rem), 920px);
+        margin: 0 auto;
+        padding: 3rem 0 2rem;
+      }
+
+      .hero {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+        letter-spacing: -0.05em;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 8vw, 5rem);
+        line-height: 0.95;
+        font-weight: 650;
+      }
+
+      .lead {
+        width: min(100%, 38rem);
+        margin: 0.9rem auto 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .panel {
+        margin-top: 1.2rem;
+        padding: 1.4rem;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .panel h2 {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        line-height: 1.02;
+      }
+
+      .panel p {
+        margin: 0.8rem 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .project-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .project-card {
+        padding: 1.2rem;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--surface-strong);
+      }
+
+      .project-card h3 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      .project-card img {
+        display: block;
+        width: 100%;
+        max-width: 420px;
+        margin-top: 1rem;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .project-card p {
+        margin: 0.55rem 0 0;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(calc(100% - 1rem), 920px);
+          padding: 1.5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>Brevetti</h1>
+      </section>
+
+      <section class="panel" aria-label="Contenuto sezione brevetti">
+        <div class="project-list">
+          <article class="project-card" aria-label="Progetto Lampadina">
+            <h3>Lampadina</h3>
+            <p>
+              Progetto aggiunto alla sezione brevetti come voce iniziale da
+              sviluppare con materiali, dettagli tecnici e documentazione collegata.
+            </p>
+            <img
+              src="./lampada-a-forma-di-busto-storico.png"
+              alt="Lampada a forma di busto storico del progetto Lampadina"
+            />
+          </article>
+          <article class="project-card" aria-label="Brevetto Taccuino elettronico">
+            <h3>Taccuino elettronico</h3>
+            <p>
+              Brevetto da completare, da sviluppare con concept, dettagli tecnici,
+              funzionalita principali e documentazione collegata.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="footer">
+        <a href="../../index.html">KarimSaoud</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="../../cookie.html">Cookie Policy</a>
+        <a href="../../note-legali.html">Note legali</a>
+        <a href="../../accessibilita.html">Accessibilita</a>
+      </div>
+    </main>
+  </body>
+</html>

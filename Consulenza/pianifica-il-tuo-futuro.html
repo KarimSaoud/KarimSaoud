@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pianifica il tuo futuro | Karim Saoud</title>
+    <meta
+      name="description"
+      content="Grafico illustrativo dedicato alla pianificazione del futuro e alla costruzione graduale di valore nel tempo."
+    />
+    <link rel="icon" type="image/png" href="KS.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-dashboard-protected>
+    <div class="page-shell">
+      <header class="site-header" id="top">
+        <div class="container nav-wrap">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+            <span></span>
+            <span></span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Menu principale">
+            <a href="index.html">Home</a>
+            <a href="index.html#soluzioni">Aree di consulenza</a>
+            <a href="index.html#contatti">Contatti</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="inner-hero">
+          <div class="container inner-hero-grid">
+            <div class="inner-hero-copy reveal">
+              <a class="inner-breadcrumb" href="index.html">Home / Pianifica il tuo futuro</a>
+              <p class="eyebrow">Area riservata</p>
+              <h1>Pianifica il tuo futuro.</h1>
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-section-page">
+          <div class="container chart-shell">
+            <div class="dashboard-head chart-card reveal">
+              <div>
+                <p class="eyebrow">Dashboard</p>
+                <h2>Quattro letture complementari per pianificare con maggiore chiarezza.</h2>
+              </div>
+            </div>
+
+            <div class="chart-grid">
+              <article class="chart-card reveal" data-chart-card="cashflow">
+                <div class="chart-card-top">
+                  <div>
+                    <p class="eyebrow">Entrate e uscite</p>
+                    <h3>Flussi economici nel tempo</h3>
+                  </div>
+                  <div class="result-chip">
+                    <span>Saldo finale</span>
+                    <strong data-result="cashflow">€ 0</strong>
+                  </div>
+                </div>
+                <form class="planner-controls compact" data-form="cashflow">
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Entrate mensili</span>
+                      <button class="add-voice" type="button" data-add-voice="monthlyIncome">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="monthlyIncome">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="monthlyIncomeLabel" value="Entrata principale" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="monthlyIncome" min="0" step="100" value="2500" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Uscite mensili</span>
+                      <button class="add-voice" type="button" data-add-voice="monthlyExpenses">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="monthlyExpenses">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="monthlyExpensesLabel" value="Spese ricorrenti" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="monthlyExpenses" min="0" step="100" value="1600" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Uscite annuali extra</span>
+                      <button class="add-voice" type="button" data-add-voice="annualExpenses">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="annualExpenses">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="annualExpensesLabel" value="Spese straordinarie" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="annualExpenses" min="0" step="100" value="2000" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="chart-toolbar">
+                  <p class="chart-hint">Rotella per zoom, trascina per navigare.</p>
+                </div>
+                <canvas id="cashflowChart" width="960" height="420"></canvas>
+                <div class="chart-legend">
+                  <span><i class="legend-primary"></i>Entrate cumulate</span>
+                  <span><i class="legend-accent"></i>Uscite cumulate</span>
+                  <span><i class="legend-soft"></i>Saldo netto</span>
+                </div>
+              </article>
+
+              <article class="chart-card reveal" data-chart-card="protection">
+                <div class="chart-card-top">
+                  <div>
+                    <p class="eyebrow">Protezione</p>
+                    <h3>Polizze di tutela</h3>
+                  </div>
+                  <div class="result-chip">
+                    <span>Copertura stimata</span>
+                    <strong data-result="protection">€ 0</strong>
+                  </div>
+                </div>
+                <form class="planner-controls compact" data-form="protection">
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Premio mensile</span>
+                      <button class="add-voice" type="button" data-add-voice="monthlyPremium">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="monthlyPremium">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="monthlyPremiumLabel" value="Tutela persona" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="monthlyPremium" min="0" step="10" value="90" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Premio annuale</span>
+                      <button class="add-voice" type="button" data-add-voice="annualPremium">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="annualPremium">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="annualPremiumLabel" value="Tutela annuale" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="annualPremium" min="0" step="50" value="300" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Capitale protetto iniziale</span>
+                      <button class="add-voice" type="button" data-add-voice="coverageBase">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="coverageBase">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="coverageBaseLabel" value="Capitale coperto" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="coverageBase" min="0" step="10000" value="120000" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="chart-toolbar">
+                  <p class="chart-hint">Rotella per zoom, trascina per navigare.</p>
+                </div>
+                <canvas id="protectionChart" width="960" height="420"></canvas>
+                <div class="chart-legend">
+                  <span><i class="legend-primary"></i>Capitale protetto</span>
+                  <span><i class="legend-accent"></i>Premi cumulati</span>
+                </div>
+              </article>
+
+              <article class="chart-card reveal" data-chart-card="investment">
+                <div class="chart-card-top">
+                  <div>
+                    <p class="eyebrow">Risparmio e investimento</p>
+                    <h3>Crescita del patrimonio</h3>
+                  </div>
+                  <div class="result-chip">
+                    <span>Valore finale stimato</span>
+                    <strong data-result="investment">€ 0</strong>
+                  </div>
+                </div>
+                <form class="planner-controls compact investment-grid" data-form="investment">
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Capitale iniziale</span>
+                      <button class="add-voice" type="button" data-add-voice="initialCapital">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="initialCapital">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="initialCapitalLabel" value="Capitale iniziale" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="initialCapital" min="0" step="1000" value="10000" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Versamento mensile</span>
+                      <button class="add-voice" type="button" data-add-voice="monthlyContribution">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="monthlyContribution">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="monthlyContributionLabel" value="PAC mensile" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="monthlyContribution" min="0" step="50" value="250" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Versamento annuale</span>
+                      <button class="add-voice" type="button" data-add-voice="annualContribution">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="annualContribution">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="annualContributionLabel" value="Versamento annuo" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="annualContribution" min="0" step="100" value="0" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="field">
+                    <span>Rendimento annuo</span>
+                    <div class="input-wrap input-wrap-suffix"><input type="number" name="annualReturn" min="0" max="15" step="0.1" value="4.5" /><span>%</span></div>
+                  </label>
+                  <label class="field">
+                    <span>Commissioni</span>
+                    <div class="input-wrap input-wrap-suffix"><input type="number" name="managementFee" min="0" max="10" step="0.1" value="0" /><span>%</span></div>
+                  </label>
+                  <label class="field">
+                    <span>Periodicita</span>
+                    <div class="input-wrap"><select name="managementFeeFrequency"><option value="annual">Annua</option><option value="monthly">Mensile</option></select></div>
+                  </label>
+                </form>
+                <div class="chart-toolbar">
+                  <p class="chart-hint">Rotella per zoom, trascina per navigare.</p>
+                </div>
+                <canvas id="investmentChart" width="960" height="420"></canvas>
+                <div class="chart-legend">
+                  <span><i class="legend-primary"></i>Capitale stimato</span>
+                  <span><i class="legend-accent"></i>Totale versato</span>
+                </div>
+              </article>
+
+              <article class="chart-card reveal" data-chart-card="summary">
+                <div class="chart-card-top">
+                  <div>
+                    <p class="eyebrow">Sintesi finale</p>
+                    <h3>Quadro riassuntivo</h3>
+                  </div>
+                  <div class="result-chip">
+                    <span>Margine finale</span>
+                    <strong data-result="summary">€ 0</strong>
+                  </div>
+                </div>
+                <form class="planner-controls compact" data-form="summary">
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Entrate</span>
+                      <button class="add-voice" type="button" data-add-voice="income">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="income">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="incomeLabel" value="Entrate" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="income" min="0" step="100" value="2500" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Uscite</span>
+                      <button class="add-voice" type="button" data-add-voice="expenses">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="expenses">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="expensesLabel" value="Uscite" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="expenses" min="0" step="100" value="1600" /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="repeat-group">
+                    <div class="repeat-group-head">
+                      <span>Investimenti / risparmi</span>
+                      <button class="add-voice" type="button" data-add-voice="investmentAllocation">Aggiungi voce</button>
+                    </div>
+                    <div class="voice-list" data-voice-list="investmentAllocation">
+                      <div class="voice-row">
+                        <input class="voice-label" type="text" name="investmentAllocationLabel" value="Investimenti e risparmi" placeholder="Nome voce" />
+                        <div class="input-wrap"><span>€</span><input type="number" name="investmentAllocation" min="0" step="50" value="400" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="chart-toolbar">
+                  <p class="chart-hint">Rotella per zoom, trascina per navigare.</p>
+                </div>
+                <canvas id="summaryChart" width="960" height="420"></canvas>
+                <div class="chart-legend">
+                  <span><i class="legend-primary"></i>Entrate cumulate</span>
+                  <span><i class="legend-accent"></i>Uscite cumulate</span>
+                  <span><i class="legend-soft"></i>Investimenti e risparmi cumulati</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-wrap">
+          <a href="../index.html">KarimSaoud</a>
+          <div class="footer-links">
+            <a href="../privacy.html">Privacy Policy</a>
+            <a href="../cookie.html">Cookie Policy</a>
+            <a href="../note-legali.html">Note legali</a>
+            <a href="../accessibilita.html">Accessibilita</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
