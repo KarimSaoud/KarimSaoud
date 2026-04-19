@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>Food &amp; Beverage Tracker</title>
+  <rect width="512" height="512" rx="112" fill="#1e3b2d"/>
+  <circle cx="164" cy="166" r="52" fill="#f6f5f0"/>
+  <path fill="#f6f5f0" d="M296 92h30v122c0 24-12 44-31 56v150h-34V270c-19-12-31-32-31-56V92h30v116h18V92h18v116h18V92z"/>
+  <path fill="#d9e4d6" d="M133 294h146c41 0 74 33 74 74v12H59v-12c0-41 33-74 74-74z"/>
+  <path fill="#8ea89b" d="M98 392h220c16 0 29 13 29 29v7H69v-7c0-16 13-29 29-29z"/>
+  <path fill="#f6f5f0" d="M387 132c33 0 60 27 60 60v74c0 25-15 46-37 55v99h-46v-99c-22-9-37-30-37-55v-74c0-33 27-60 60-60z"/>
+  <rect x="352" y="160" width="70" height="122" rx="35" fill="#1e3b2d"/>
+</svg>

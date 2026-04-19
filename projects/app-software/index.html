@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>App-Software | KarimSaoud</title>
+    <meta
+      name="description"
+      content="Sezione dedicata alle app e ai software all'interno dell'hub Project di Karim Saoud."
+    />
+    <link rel="icon" type="image/png" href="../../KS.png" />
+    <style>
+      :root {
+        --bg: #efe6d8;
+        --surface: rgba(255, 252, 247, 0.76);
+        --surface-strong: rgba(255, 253, 249, 0.92);
+        --panel: linear-gradient(180deg, rgba(255, 252, 247, 0.92), rgba(250, 242, 230, 0.82));
+        --border: rgba(54, 47, 41, 0.12);
+        --border-strong: rgba(54, 47, 41, 0.24);
+        --text: #1e1813;
+        --muted: #665c53;
+        --accent: #0f6d63;
+        --accent-soft: rgba(15, 109, 99, 0.12);
+        --secondary: #7f4a1f;
+        --shadow: 0 28px 70px rgba(36, 58, 78, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 12% 0%, rgba(127, 74, 31, 0.18), transparent 24%),
+          radial-gradient(circle at 88% 12%, rgba(15, 109, 99, 0.18), transparent 24%),
+          linear-gradient(180deg, #fbf6ef 0%, var(--bg) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(calc(100% - 2rem), 1120px);
+        margin: 0 auto;
+        padding: 2rem 0 2.4rem;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .crumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.56);
+        color: var(--muted);
+        backdrop-filter: blur(14px);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .crumb:hover,
+      .crumb:focus-visible {
+        transform: translateY(-2px);
+        border-color: var(--border-strong);
+        background: rgba(255, 255, 255, 0.74);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        width: 22rem;
+        height: 22rem;
+        top: -10rem;
+        right: -5rem;
+        background: radial-gradient(circle, rgba(15, 109, 99, 0.18), transparent 68%);
+      }
+
+      .hero::after {
+        width: 18rem;
+        height: 18rem;
+        bottom: -9rem;
+        left: -3rem;
+        background: radial-gradient(circle, rgba(127, 74, 31, 0.14), transparent 72%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+        gap: 1.4rem;
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-bottom: 0.9rem;
+        padding: 0.5rem 0.85rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+        letter-spacing: -0.05em;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 7vw, 5.4rem);
+        line-height: 0.94;
+        color: #173e5f;
+        text-wrap: balance;
+      }
+
+      .hero p {
+        width: min(100%, 40rem);
+        margin: 1rem 0 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.75;
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .hero-card {
+        padding: 1rem 1.1rem;
+        border: 1px solid rgba(15, 109, 99, 0.14);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .hero-card strong {
+        display: block;
+        font-size: 1.85rem;
+        line-height: 1;
+        color: var(--accent);
+      }
+
+      .hero-card span {
+        display: block;
+        margin-top: 0.4rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        margin: 1.4rem 0 1rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        color: #2c4658;
+      }
+
+      .section-copy {
+        max-width: 34rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.1rem;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+        min-height: 280px;
+        padding: 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(251, 246, 239, 0.82)),
+          var(--surface);
+        box-shadow: 0 24px 54px rgba(36, 58, 78, 0.1);
+        overflow: hidden;
+        transition:
+          transform 220ms ease,
+          box-shadow 220ms ease,
+          border-color 220ms ease;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top right, rgba(15, 109, 99, 0.14), transparent 30%),
+          radial-gradient(circle at bottom left, rgba(127, 74, 31, 0.1), transparent 26%);
+        opacity: 0.92;
+        transition: opacity 220ms ease;
+      }
+
+      .card:hover,
+      .card:focus-visible {
+        transform: translateY(-6px);
+        border-color: var(--border-strong);
+        box-shadow: 0 34px 66px rgba(36, 58, 78, 0.16);
+      }
+
+      .card:hover::before,
+      .card:focus-visible::before {
+        opacity: 1;
+      }
+
+      .card-body,
+      .card-meta,
+      .card-footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+      }
+
+      .card-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.75rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .status {
+        padding: 0.42rem 0.72rem;
+        border-radius: 999px;
+        background: rgba(23, 62, 95, 0.1);
+        color: #173e5f;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .card-title {
+        margin-top: 0.2rem;
+        font-size: clamp(1.8rem, 4vw, 2.35rem);
+        line-height: 1.02;
+      }
+
+      .card-copy {
+        margin: 0.7rem 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .feature-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+
+      .feature {
+        padding: 0.55rem 0.75rem;
+        border: 1px solid rgba(54, 47, 41, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.76);
+        color: #4f463f;
+        font-size: 0.85rem;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: auto;
+      }
+
+      .card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1rem;
+        border-radius: 999px;
+        background: #173e5f;
+        color: #fffaf5;
+        font-weight: 700;
+        transition:
+          transform 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .card-link:hover,
+      .card-link:focus-visible {
+        transform: translateX(2px);
+        background: #214f76;
+      }
+
+      .card-note {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      .site-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1.2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .site-footer a {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+      }
+
+      @media (max-width: 860px) {
+        .page {
+          width: min(calc(100% - 1.2rem), 1120px);
+          padding: 1.3rem 0 2rem;
+        }
+
+        .hero {
+          padding: 1.35rem;
+          border-radius: 26px;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding:
+            max(1rem, env(safe-area-inset-top))
+            env(safe-area-inset-right)
+            max(1.4rem, env(safe-area-inset-bottom))
+            env(safe-area-inset-left);
+        }
+
+        .topbar,
+        .site-footer {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .crumb,
+        .card-link {
+          justify-content: center;
+        }
+
+        .card {
+          min-height: auto;
+        }
+
+        .card-footer {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .footer-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="topbar">
+        <a class="crumb" href="../index.html" aria-label="Torna alla sezione Projects">
+          <span aria-hidden="true">←</span>
+          <span>Projects</span>
+        </a>
+      </div>
+
+      <section class="hero" aria-label="Introduzione alla sezione App e Software">
+        <div class="hero-content">
+          <div>
+            <h1>App-Software</h1>
+          </div>
+
+
+        </div>
+      </section>
+
+      <section aria-labelledby="catalogo-title">
+        <div class="section-head">
+        </div>
+
+        <div class="grid" aria-label="Sottocartelle app e software">
+          <article class="card" aria-label="Progetto Bodybuilding">
+            <div class="card-meta">
+              <span class="card-kicker">App</span>
+              <span class="status">Disponibile</span>
+            </div>
+
+            <div class="card-body">
+              <h3 class="card-title">Bodybuilding</h3>
+              <p class="card-copy">
+                Area dedicata a un progetto focalizzato su allenamento, struttura
+                dei contenuti e organizzazione dell'esperienza utente.
+              </p>
+            </div>
+
+            <div class="feature-list" aria-label="Caratteristiche del progetto Bodybuilding">
+              <span class="feature">Interfaccia dedicata</span>
+              <span class="feature">Percorso tematico</span>
+              <span class="feature">Base per evoluzioni future</span>
+            </div>
+
+            <div class="card-footer">
+              <span class="card-note">Apri il progetto per entrare nella sezione specifica.</span>
+              <a class="card-link" href="./bodybuilding/index.html">
+                <span>Esplora</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card" aria-label="Progetto Food-Beverage">
+            <div class="card-meta">
+              <span class="card-kicker">App</span>
+              <span class="status">Disponibile</span>
+            </div>
+
+            <div class="card-body">
+              <h3 class="card-title">Food-Beverage</h3>
+              <p class="card-copy">
+                Applicazione dedicata a tracciamento alimentare, routine nutrizionali
+                e gestione dei dati nell'area food and beverage.
+              </p>
+            </div>
+
+            <div class="feature-list" aria-label="Caratteristiche del progetto Food-Beverage">
+              <span class="feature">Next.js app</span>
+              <span class="feature">Food log</span>
+              <span class="feature">Scanner e servizi</span>
+            </div>
+
+            <div class="card-footer">
+              <span class="card-note">Apre la web app installabile pubblicata online.</span>
+              <a class="card-link" href="https://food-beverage-tracker-karimsaouds-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <span>Esplora</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card" aria-label="Progetto Personalita">
+            <div class="card-meta">
+              <span class="card-kicker">App</span>
+              <span class="status">Disponibile</span>
+            </div>
+
+            <div class="card-body">
+              <h3 class="card-title">Personalita</h3>
+              <p class="card-copy">
+                Sezione interattiva con stepper identitari e navigazione ottimizzata
+                per consultazione rapida.
+              </p>
+            </div>
+
+            <div class="feature-list" aria-label="Caratteristiche del progetto Personalita">
+              <span class="feature">Stepper UI</span>
+              <span class="feature">Layout responsive</span>
+              <span class="feature">Esperienza ordinata</span>
+            </div>
+
+            <div class="card-footer">
+              <span class="card-note">Apre la pagina dedicata del progetto.</span>
+              <a class="card-link" href="./personalita/index.html">
+                <span>Esplora</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card" aria-label="Progetto Profilo e Dialogo">
+            <div class="card-meta">
+              <span class="card-kicker">App</span>
+              <span class="status">Disponibile</span>
+            </div>
+
+            <div class="card-body">
+              <h3 class="card-title">Profilo &amp; Dialogo</h3>
+              <p class="card-copy">
+                Wizard consulenziale per profilazione cliente, bisogni familiari,
+                calcoli live e report finale stampabile.
+              </p>
+            </div>
+
+            <div class="feature-list" aria-label="Caratteristiche del progetto Profilo e Dialogo">
+              <span class="feature">Next.js app</span>
+              <span class="feature">Wizard multistep</span>
+              <span class="feature">Report stampabile</span>
+            </div>
+
+            <div class="card-footer">
+              <span class="card-note">Apre il punto di accesso del progetto.</span>
+              <a class="card-link" href="./profile%26dialogo/index.html">
+                <span>Esplora</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <a href="../../index.html">KarimSaoud</a>
+        <div class="footer-links">
+          <a href="../../privacy.html">Privacy Policy</a>
+          <a href="../../cookie.html">Cookie Policy</a>
+          <a href="../../note-legali.html">Note legali</a>
+          <a href="../../accessibilita.html">Accessibilita</a>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accesso area riservata | Alleanza</title>
+    <link rel="icon" type="image/png" href="KS.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="access-section" aria-labelledby="access-title">
+        <div class="access-box">
+        <a class="brand" href="index.html" aria-label="Alleanza Assicurazioni">
+          <img class="brand-logo" src="alleanza.png" alt="Alleanza Assicurazioni" />
+        </a>
+        <p class="eyebrow">Area consulenziale</p>
+        <h1 id="access-title">Inserisci il codice di accesso</h1>
+        <form class="code-form" data-code-form>
+          <label class="sr-only" for="dashboard-code">Codice numerico</label>
+          <input
+            id="dashboard-code"
+            class="code-input"
+            type="password"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            maxlength="5"
+            pattern="[0-9]{5}"
+            placeholder="00000"
+            required
+          />
+          <button class="btn btn-primary" type="submit">Accedi</button>
+        </form>
+        <p class="access-note" data-access-feedback aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

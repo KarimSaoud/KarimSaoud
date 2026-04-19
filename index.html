@@ -7,14 +7,16 @@
     <link rel="icon" type="image/png" href="./KS.png" />
     <style>
       :root {
-        --bg: #fbfaf7;
-        --surface: rgba(255, 255, 255, 0.86);
-        --surface-strong: rgba(255, 255, 255, 0.96);
-        --border: rgba(20, 20, 20, 0.12);
-        --border-strong: rgba(20, 20, 20, 0.2);
-        --text: #171717;
-        --muted: #66625c;
-        --shadow: 0 20px 44px rgba(18, 18, 18, 0.06);
+        --bg: #f3ede3;
+        --surface: linear-gradient(180deg, rgba(255, 251, 246, 0.84), rgba(255, 247, 239, 0.72));
+        --surface-strong: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(255, 248, 241, 0.88));
+        --border: rgba(74, 57, 43, 0.12);
+        --border-strong: rgba(74, 57, 43, 0.24);
+        --text: #1f1812;
+        --muted: #6d6257;
+        --accent: #a55b2a;
+        --secondary: #294f7a;
+        --shadow: 0 26px 60px rgba(41, 79, 122, 0.12);
         --max-width: 1120px;
       }
 
@@ -29,9 +31,10 @@
         font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
         color: var(--text);
         background:
-          radial-gradient(circle at 12% 0%, rgba(223, 120, 92, 0.08), transparent 24%),
-          radial-gradient(circle at 88% 10%, rgba(111, 149, 137, 0.08), transparent 20%),
-          linear-gradient(180deg, #fffdfa 0%, var(--bg) 100%);
+          radial-gradient(circle at 10% 0%, rgba(165, 91, 42, 0.14), transparent 26%),
+          radial-gradient(circle at 88% 10%, rgba(41, 79, 122, 0.14), transparent 22%),
+          radial-gradient(circle at 50% 100%, rgba(161, 122, 84, 0.08), transparent 30%),
+          linear-gradient(180deg, #fffaf4 0%, var(--bg) 100%);
       }
 
       a {
@@ -55,10 +58,12 @@
 
       h1 {
         margin: 0;
+        color: var(--secondary);
         font-size: clamp(3.5rem, 10vw, 7rem);
-        line-height: 0.95;
+        line-height: 0.92;
         letter-spacing: -0.06em;
         font-weight: 650;
+        text-shadow: 0 8px 24px rgba(255, 255, 255, 0.55);
       }
 
       .life-track {
@@ -73,9 +78,10 @@
         margin: 0.2rem 0 0;
         color: var(--muted);
         font-size: 0.92rem;
-        line-height: 1.6;
+        line-height: 1.7;
         text-align: center;
         white-space: pre-line;
+        max-width: 30rem;
       }
 
       .life-row {
@@ -103,7 +109,7 @@
         inset: 0 auto 0 0;
         width: 0;
         border-radius: inherit;
-        background: linear-gradient(90deg, #171717 0%, #444 100%);
+        background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 100%);
       }
 
       .life-marker {
@@ -172,13 +178,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 156px;
-        padding: 1.1rem;
+        min-height: 164px;
+        padding: 1.2rem;
         border: 1px solid var(--border);
-        border-radius: 20px;
+        border-radius: 24px;
         background: var(--surface);
         box-shadow: var(--shadow);
         overflow: hidden;
+        backdrop-filter: blur(12px);
         transition:
           transform 180ms ease,
           border-color 180ms ease,
@@ -190,17 +197,19 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.15));
-        opacity: 0.85;
+        background:
+          radial-gradient(circle at top right, rgba(165, 91, 42, 0.14), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.16));
+        opacity: 0.92;
         transition: opacity 180ms ease;
       }
 
       .card:hover,
       .card:focus-visible {
-        transform: translateY(-3px);
+        transform: translateY(-4px);
         border-color: var(--border-strong);
         background: var(--surface-strong);
-        box-shadow: 0 24px 52px rgba(18, 18, 18, 0.08);
+        box-shadow: 0 32px 64px rgba(41, 79, 122, 0.16);
       }
 
       .card:hover::before,
@@ -240,6 +249,7 @@
         line-height: 1.6;
         text-wrap: balance;
       }
+
 
       .genealogy-card {
         border-color: rgba(120, 91, 67, 0.2);
@@ -292,11 +302,13 @@
       .site-footer {
         display: grid;
         gap: 1rem;
-        margin-top: 1rem;
+        margin-top: 1.35rem;
+        padding: 1.2rem 1.4rem 0;
         color: var(--muted);
         font-size: 0.92rem;
         justify-items: center;
         text-align: center;
+        border-top: 1px solid rgba(74, 57, 43, 0.1);
       }
 
       .social-strip {
@@ -465,6 +477,7 @@
           font-size: clamp(1.45rem, 7vw, 2rem);
         }
 
+
       }
 
       @media (max-width: 480px) {
@@ -551,13 +564,13 @@ Assembled in Florence</p>
       </section>
 
       <section class="grid" aria-label="Project hub">
-        <a class="card" href="./BioWiki/index.html">
+        <a class="card" href="./biowiki/index.html">
           <div class="card-head">
             <h2 class="card-title">BioWiki</h2>
           </div>
         </a>
 
-        <a class="card genealogy-card" href="./Albero Genealogico/index.html">
+        <a class="card genealogy-card" href="./alberogenealogico/index.html">
           <div class="card-head">
             <h2 class="card-title">
               <span class="card-title-main">Albero Genealogico</span>
@@ -565,41 +578,31 @@ Assembled in Florence</p>
           </div>
         </a>
 
-        <a class="card" href="./Percorso Lavorativo/lavoro.html">
+        <a class="card" href="./percorsolavorativo/index.html">
           <div class="card-head">
             <h2 class="card-title">Percorso Lavorativo</h2>
           </div>
         </a>
 
-        <a class="card" href="./Percorso Formativo/index.html">
+        <a class="card" href="./percorsoformativo/index.html">
           <div class="card-head">
             <h2 class="card-title">Percorso Formativo</h2>
           </div>
         </a>
 
-        <a class="card" href="./Consulenza/consulenza.html">
-          <div class="card-head">
-            <h2 class="card-title">Consulenza</h2>
-          </div>
-        </a>
 
-        <a class="card" href="./Project/index.html">
+        <a class="card" href="./projects/index.html">
           <div class="card-head">
             <h2 class="card-title">Project</h2>
           </div>
         </a>
 
-        <a class="card" href="./Documenti Personali/index.html">
+        <a class="card" href="./documentipersonali/index.html">
           <div class="card-head">
             <h2 class="card-title">Documenti Personali</h2>
           </div>
         </a>
 
-        <a class="card" href="./Obiettivi/index.html">
-          <div class="card-head">
-            <h2 class="card-title">Obiettivi</h2>
-          </div>
-        </a>
 
       </section>
       <footer class="site-footer">

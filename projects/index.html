@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Projects | KarimSaoud</title>
+    <meta
+      name="description"
+      content="Hub dei progetti di Karim Saoud con accesso alle sottocartelle dedicate."
+    />
+    <link rel="icon" type="image/png" href="../KS.png" />
+    <style>
+      :root {
+        --bg: #f3ede3;
+        --surface: linear-gradient(180deg, rgba(255, 251, 246, 0.84), rgba(255, 247, 239, 0.72));
+        --surface-strong: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(255, 248, 241, 0.88));
+        --border: rgba(74, 57, 43, 0.12);
+        --border-strong: rgba(74, 57, 43, 0.24);
+        --text: #1f1812;
+        --muted: #6d6257;
+        --accent: #a55b2a;
+        --secondary: #294f7a;
+        --shadow: 0 26px 60px rgba(41, 79, 122, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 0%, rgba(165, 91, 42, 0.14), transparent 26%),
+          radial-gradient(circle at 88% 10%, rgba(41, 79, 122, 0.14), transparent 22%),
+          radial-gradient(circle at 50% 100%, rgba(161, 122, 84, 0.08), transparent 30%),
+          linear-gradient(180deg, #fffaf4 0%, var(--bg) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(calc(100% - 2rem), 1040px);
+        margin: 0 auto;
+        padding: 3rem 0 2rem;
+      }
+
+      .hero {
+        text-align: center;
+        margin-bottom: 1.2rem;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+        letter-spacing: -0.05em;
+      }
+
+      h1 {
+        color: var(--secondary);
+        font-size: clamp(3rem, 8vw, 5.4rem);
+        line-height: 0.92;
+        font-weight: 650;
+        text-shadow: 0 8px 24px rgba(255, 255, 255, 0.55);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 164px;
+        padding: 1.2rem;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        backdrop-filter: blur(12px);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top right, rgba(165, 91, 42, 0.14), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.16));
+        opacity: 0.92;
+        transition: opacity 180ms ease;
+      }
+
+      .card:hover,
+      .card:focus-visible {
+        transform: translateY(-4px);
+        border-color: var(--border-strong);
+        background: var(--surface-strong);
+        box-shadow: 0 32px 64px rgba(41, 79, 122, 0.16);
+      }
+
+      .card:hover::before,
+      .card:focus-visible::before {
+        opacity: 1;
+      }
+
+      .card-head {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        text-align: center;
+      }
+
+      .card-title {
+        font-size: clamp(1.6rem, 3vw, 2.3rem);
+        line-height: 1.05;
+        font-weight: 620;
+      }
+
+      .card-kicker {
+        display: block;
+        margin-bottom: 0.45rem;
+        color: var(--accent);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .site-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .site-footer a {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+      }
+
+      @media (max-width: 960px) {
+        .page {
+          width: min(calc(100% - 1.5rem), 1040px);
+          padding: 2.25rem 0 1.75rem;
+        }
+
+        .grid {
+          gap: 0.85rem;
+        }
+
+        .card {
+          min-height: 148px;
+          padding: 1rem;
+        }
+
+        .site-footer {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(calc(100% - 1rem), 1040px);
+          padding:
+            max(1.5rem, env(safe-area-inset-top))
+            env(safe-area-inset-right)
+            max(1.5rem, env(safe-area-inset-bottom))
+            env(safe-area-inset-left);
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .site-footer {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>Projects</h1>
+      </section>
+
+      <section class="grid" aria-label="Sottocartelle progetti">
+        <a class="card" href="./app-software/index.html">
+          <div class="card-head">
+            <span class="card-kicker">Sottocartella</span>
+            <h2 class="card-title">App-Software</h2>
+          </div>
+        </a>
+
+        <a class="card" href="./brevetti/index.html">
+          <div class="card-head">
+            <span class="card-kicker">Sottocartella</span>
+            <h2 class="card-title">Brevetti</h2>
+          </div>
+        </a>
+
+        <a class="card" href="./obiettivi/index.html">
+          <div class="card-head">
+            <span class="card-kicker">Sottocartella</span>
+            <h2 class="card-title">Obiettivi</h2>
+          </div>
+        </a>
+      </section>
+
+      <footer class="site-footer">
+        <a href="../index.html">KarimSaoud</a>
+        <div class="footer-links">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../cookie.html">Cookie Policy</a>
+          <a href="../note-legali.html">Note legali</a>
+          <a href="../accessibilita.html">Accessibilita</a>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

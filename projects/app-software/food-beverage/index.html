@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1e3b2d" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Food Log" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Food & Beverage Tracker</title>
+    <link rel="manifest" href="./public/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+    <link rel="apple-touch-icon" href="./public/icons/apple-touch-icon.png" />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1rem;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(76, 145, 92, 0.16), transparent 28%),
+          linear-gradient(180deg, #132019 0%, #0b120e 45%, #060907 100%);
+        color: #f2f3ee;
+      }
+
+      main {
+        width: min(calc(100% - 2rem), 760px);
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.32);
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(2.4rem, 8vw, 4.8rem);
+        letter-spacing: -0.05em;
+      }
+
+      p {
+        margin: 0;
+        color: rgba(242, 243, 238, 0.78);
+        line-height: 1.7;
+      }
+
+      .eyebrow {
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.78rem;
+        color: rgba(242, 243, 238, 0.54);
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.5rem;
+      }
+
+      .button,
+      .back-link {
+        display: inline-block;
+        padding: 0.85rem 1.2rem;
+        min-height: 44px;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+
+      .button {
+        background: #63b26f;
+        color: #08110c;
+        font-weight: 700;
+      }
+
+      .back-link {
+        color: rgba(242, 243, 238, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .page-footer {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.4rem;
+        color: rgba(242, 243, 238, 0.72);
+        font-size: 0.92rem;
+        flex-wrap: wrap;
+      }
+
+      code {
+        padding: 0.15rem 0.35rem;
+        border-radius: 0.45rem;
+        background: rgba(255, 255, 255, 0.08);
+        color: #8dde98;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Food & Beverage</p>
+      <h1>Food Log</h1>
+      <p>
+        Questa pagina e il progetto Next.js includono manifest, icone iOS e service worker.
+        Per installarla su iPhone apri l'app da Safari tramite server locale o URL HTTPS pubblicato:
+        i service worker non funzionano direttamente da <code>file://</code>.
+      </p>
+      <div class="actions">
+        <a class="button" href="http://localhost:3000">Apri app locale</a>
+        <a class="back-link" href="../index.html">Torna ad App-Software</a>
+      </div>
+      <div class="page-footer">
+        <a href="../../../index.html">KarimSaoud</a>
+        <a href="../../../privacy.html">Privacy Policy</a>
+        <a href="../../../cookie.html">Cookie Policy</a>
+        <a href="../../../note-legali.html">Note legali</a>
+        <a href="../../../accessibilita.html">Accessibilita</a>
+      </div>
+    </main>
+  </body>
+</html>

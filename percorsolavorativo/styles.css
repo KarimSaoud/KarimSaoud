@@ -1,0 +1,646 @@
+:root {
+  --bg: #f3ede3;
+  --surface: linear-gradient(180deg, rgba(255, 251, 246, 0.84), rgba(255, 247, 239, 0.72));
+  --surface-strong: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(255, 248, 241, 0.88));
+  --line: rgba(74, 57, 43, 0.1);
+  --text: #1f1812;
+  --muted: #6d6257;
+  --accent: #a55b2a;
+  --secondary: #294f7a;
+  --shadow: 0 24px 60px rgba(41, 79, 122, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(165, 91, 42, 0.14), transparent 24%),
+    radial-gradient(circle at 88% 10%, rgba(41, 79, 122, 0.12), transparent 22%),
+    linear-gradient(180deg, #fffaf4 0%, var(--bg) 100%);
+}
+
+body.aia-page {
+  color: rgb(255, 255, 255);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.06), transparent 28%),
+    linear-gradient(180deg, rgb(23, 63, 122) 0%, rgb(28, 71, 136) 55%, rgb(20, 55, 110) 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(calc(100% - 2rem), 960px);
+  margin: 0 auto;
+  padding: 3rem 0 2rem;
+}
+
+.page-hero {
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h3 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  letter-spacing: -0.05em;
+}
+
+h1 {
+  margin-bottom: 0.9rem;
+  color: var(--secondary);
+  font-size: clamp(3rem, 8vw, 5.6rem);
+  line-height: 0.92;
+  font-weight: 650;
+  text-shadow: 0 8px 24px rgba(255, 255, 255, 0.55);
+}
+
+h3 {
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.lead,
+.company,
+.location,
+.period {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.period {
+  display: grid;
+  gap: 0.05rem;
+  text-align: center;
+}
+
+.period-dates,
+.period-duration {
+  display: block;
+}
+
+.timeline {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 1.2rem;
+  padding: 1.2rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.timeline-link-card {
+  position: relative;
+}
+
+.timeline-link-card::after {
+  content: "Apri";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  opacity: 0.88;
+}
+
+.timeline-content {
+  min-width: 0;
+}
+
+.timeline-item:hover,
+.timeline-item:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(74, 57, 43, 0.2);
+  background: var(--surface-strong);
+  box-shadow: 0 28px 64px rgba(41, 79, 122, 0.14);
+}
+
+.timeline-meta {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  justify-items: center;
+}
+
+.company-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.company-logo:hover,
+.company-logo:focus-visible {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+.company-logo img {
+  display: block;
+  max-width: 118px;
+  max-height: 30px;
+  width: auto;
+  height: auto;
+}
+
+.company-mark {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.timeline-item-dmo {
+  background: rgb(22, 60, 160);
+  border-color: rgba(22, 60, 160, 0.4);
+}
+
+.timeline-item-alleanza {
+  position: relative;
+  background: rgb(12, 39, 82);
+  border-color: rgba(12, 39, 82, 0.42);
+}
+
+.timeline-item-alleanza:hover,
+.timeline-item-alleanza:focus-within {
+  background: rgb(12, 39, 82);
+  border-color: rgba(12, 39, 82, 0.56);
+}
+
+.timeline-item-alleanza h3,
+.timeline-item-alleanza .company,
+.timeline-item-alleanza .period,
+.timeline-item-alleanza .location {
+  color: rgb(220, 110, 45);
+}
+
+.timeline-item-herbalife {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(241, 247, 243, 0.88));
+  border-color: rgba(44, 72, 69, 0.18);
+}
+
+.timeline-item-herbalife:hover,
+.timeline-item-herbalife:focus-within {
+  background: rgb(255, 255, 255);
+  border-color: rgba(44, 72, 69, 0.3);
+}
+
+.timeline-item-herbalife h3,
+.timeline-item-herbalife .company,
+.timeline-item-herbalife .period,
+.timeline-item-herbalife .location {
+  color: rgb(44, 72, 69);
+}
+
+.timeline-item-herbalife .experience-link {
+  background: rgba(111, 149, 137, 0.1);
+  border-color: rgba(44, 72, 69, 0.22);
+  color: rgb(44, 72, 69);
+  box-shadow: none;
+}
+
+.timeline-item-dmo:hover,
+.timeline-item-dmo:focus-within {
+  background: rgb(22, 60, 160);
+  border-color: rgba(22, 60, 160, 0.55);
+}
+
+.timeline-item-dmo h3,
+.timeline-item-dmo .company,
+.timeline-item-dmo .period,
+.timeline-item-dmo .location {
+  color: rgb(227, 60, 118);
+}
+
+.timeline-item-hm {
+  background: rgb(255, 255, 255);
+  border-color: rgba(188, 40, 37, 0.18);
+}
+
+.timeline-item-hm:hover,
+.timeline-item-hm:focus-within {
+  background: rgb(255, 255, 255);
+  border-color: rgba(188, 40, 37, 0.3);
+}
+
+.timeline-item-hm h3,
+.timeline-item-hm .company,
+.timeline-item-hm .period,
+.timeline-item-hm .location {
+  color: rgb(188, 40, 37);
+}
+
+.timeline-item-monogrid {
+  background: rgb(0, 0, 0);
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.timeline-item-monogrid:hover,
+.timeline-item-monogrid:focus-within {
+  background: rgb(0, 0, 0);
+  border-color: rgba(0, 0, 0, 0.55);
+}
+
+.timeline-item-monogrid .period,
+.timeline-item-monogrid .location {
+  color: rgb(255, 255, 255);
+}
+
+.timeline-item-monogrid .company-logo,
+.timeline-item-monogrid h3,
+.timeline-item-monogrid .company {
+  color: rgb(0, 0, 245);
+}
+
+.timeline-item-aia h3,
+.timeline-item-aia .company,
+.timeline-item-aia .period,
+.timeline-item-aia .location {
+  color: rgb(255, 255, 255);
+}
+
+.timeline-item-aia {
+  background: rgb(28, 71, 136);
+  border-color: rgba(28, 71, 136, 0.4);
+}
+
+.timeline-item-aia:hover,
+.timeline-item-aia:focus-within {
+  background: rgb(28, 71, 136);
+  border-color: rgba(28, 71, 136, 0.56);
+}
+
+.logo-dmo {
+  background: transparent;
+}
+
+.logo-dmo img {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(82%) saturate(2446%) hue-rotate(300deg)
+    brightness(94%) contrast(91%);
+}
+
+.company {
+  margin-top: 0.55rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.location {
+  margin-top: 0.25rem;
+}
+
+.card-hint {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.detail-page {
+  width: min(calc(100% - 2rem), 1100px);
+}
+
+.detail-layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail-card {
+  padding: 1.2rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.aia-page .page-hero,
+.aia-page .lead,
+.aia-page .eyebrow,
+.aia-page .site-footer a,
+.aia-page .site-footer p {
+  color: rgb(255, 255, 255);
+}
+
+.aia-page .detail-card {
+  background: rgba(18, 53, 107, 0.72);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 40px rgba(8, 24, 52, 0.28);
+}
+
+.aia-page .action-link {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgb(255, 255, 255);
+}
+
+.aia-page .season-block {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.detail-card h2 {
+  margin: 0 0 0.65rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+
+.experience-link {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.18rem 0.55rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.timeline-item-alleanza .experience-link {
+  background: rgba(220, 110, 45, 0.14);
+  border-color: rgba(220, 110, 45, 0.32);
+  color: rgb(220, 110, 45);
+  box-shadow: none;
+}
+
+.season-block {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.season-block:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.season-block + .season-block {
+  margin-top: 1rem;
+}
+
+.season-block summary {
+  cursor: pointer;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  list-style: none;
+}
+
+.season-block summary::-webkit-details-marker {
+  display: none;
+}
+
+.match-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.match-item {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) 70px;
+  gap: 0.8rem 1rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid rgba(42, 34, 27, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  align-items: start;
+}
+
+.aia-page .match-item {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.match-date,
+.match-score,
+.match-note {
+  color: var(--muted);
+}
+
+.aia-page .match-date,
+.aia-page .match-score,
+.aia-page .match-note {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.match-date,
+.match-score {
+  font-weight: 700;
+}
+
+.match-teams {
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.aia-page .match-teams,
+.aia-page .detail-card h2,
+.aia-page .season-block summary {
+  color: rgb(255, 255, 255);
+}
+
+.aia-page .site-footer {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.match-score {
+  text-align: right;
+}
+
+.match-note {
+  grid-column: 2 / 4;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.featured {
+  border-color: rgba(122, 94, 66, 0.18);
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.site-footer p,
+.site-footer a {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(calc(100% - 1rem), 960px);
+    padding: 1.5rem 0 1.5rem;
+  }
+
+  .page-hero {
+    margin-bottom: 1.2rem;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    padding: 1rem;
+    border-radius: 18px;
+  }
+
+  .timeline-meta {
+    gap: 0.45rem;
+  }
+
+  .timeline-content {
+    text-align: center;
+  }
+
+  .company {
+    margin-top: 0.4rem;
+  }
+
+  .site-footer {
+    flex-direction: column;
+  }
+
+  .timeline-link-card::after {
+    top: auto;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .experience-link {
+    top: auto;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .timeline-item-alleanza,
+  .timeline-item-herbalife {
+    padding-bottom: 3.8rem;
+  }
+
+  .match-item {
+    grid-template-columns: 1fr;
+  }
+
+  .match-score {
+    text-align: left;
+  }
+
+  .match-note {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 460px) {
+  .page-shell {
+    width: min(calc(100% - 0.75rem), 960px);
+    padding: 1rem 0 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 12vw, 3.3rem);
+  }
+
+  .timeline-item {
+    gap: 0.8rem;
+    padding: 0.95rem;
+  }
+
+  .company-logo img {
+    max-width: 104px;
+    max-height: 26px;
+  }
+
+  .period,
+  .location,
+  .company {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .experience-link {
+    left: 0.95rem;
+    right: 0.95rem;
+    justify-content: center;
+  }
+
+  .footer-links {
+    gap: 0.55rem 0.8rem;
+  }
+}

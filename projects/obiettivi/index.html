@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Obiettivi | KarimSaoud</title>
+    <meta
+      name="description"
+      content="Spazio dedicato agli obiettivi personali e professionali di Karim Saoud."
+    />
+    <link rel="icon" type="image/png" href="../../KS.png" />
+    <style>
+      :root {
+        --bg: #ece5d8;
+        --panel: linear-gradient(180deg, rgba(255, 252, 246, 0.92), rgba(247, 240, 228, 0.84));
+        --surface: rgba(255, 253, 249, 0.8);
+        --surface-strong: rgba(255, 255, 255, 0.92);
+        --border: rgba(66, 55, 44, 0.12);
+        --border-strong: rgba(66, 55, 44, 0.24);
+        --text: #201914;
+        --muted: #6b6058;
+        --accent: #8f5a22;
+        --accent-cool: #35586b;
+        --accent-soft: rgba(143, 90, 34, 0.1);
+        --shadow: 0 28px 70px rgba(42, 58, 76, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 0%, rgba(143, 90, 34, 0.18), transparent 24%),
+          radial-gradient(circle at 88% 10%, rgba(53, 88, 107, 0.15), transparent 24%),
+          linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(calc(100% - 2rem), 1120px);
+        margin: 0 auto;
+        padding: 2rem 0 2.4rem;
+      }
+
+      .topbar {
+        margin-bottom: 1.2rem;
+      }
+
+      .crumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.58);
+        color: var(--muted);
+        backdrop-filter: blur(14px);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .crumb:hover,
+      .crumb:focus-visible {
+        transform: translateY(-2px);
+        border-color: var(--border-strong);
+        background: rgba(255, 255, 255, 0.76);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        width: 22rem;
+        height: 22rem;
+        top: -10rem;
+        right: -6rem;
+        background: radial-gradient(circle, rgba(53, 88, 107, 0.17), transparent 68%);
+      }
+
+      .hero::after {
+        width: 18rem;
+        height: 18rem;
+        bottom: -9rem;
+        left: -4rem;
+        background: radial-gradient(circle, rgba(143, 90, 34, 0.14), transparent 72%);
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+        gap: 1.4rem;
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 0.85rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+        letter-spacing: -0.05em;
+      }
+
+      h1 {
+        margin-top: 0.85rem;
+        font-size: clamp(3rem, 7vw, 5.2rem);
+        line-height: 0.94;
+        color: var(--accent-cool);
+        text-wrap: balance;
+      }
+
+      .hero-copy {
+        width: min(100%, 42rem);
+        margin: 1rem 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .hero-stat {
+        padding: 1rem 1.1rem;
+        border: 1px solid rgba(53, 88, 107, 0.14);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.74);
+      }
+
+      .hero-stat strong {
+        display: block;
+        font-size: 1.8rem;
+        line-height: 1;
+        color: var(--accent-cool);
+      }
+
+      .hero-stat span {
+        display: block;
+        margin-top: 0.45rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .panel {
+        padding: 1.35rem;
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        background: var(--surface);
+        box-shadow: 0 20px 50px rgba(42, 58, 76, 0.1);
+        backdrop-filter: blur(14px);
+      }
+
+      .panel-title {
+        font-size: clamp(1.7rem, 4vw, 2.35rem);
+        color: #2d4758;
+      }
+
+      .panel-copy {
+        margin-top: 0.7rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .goal-grid {
+        display: grid;
+        gap: 0.85rem;
+        margin-top: 1rem;
+      }
+
+      .goal-card {
+        padding: 1rem;
+        border-radius: 24px;
+        border: 1px solid rgba(66, 55, 44, 0.08);
+        background: var(--surface-strong);
+      }
+
+      .goal-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .goal-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.42rem 0.72rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .goal-card p {
+        margin: 0.75rem 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .roadmap {
+        display: grid;
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      .roadmap-step {
+        padding: 1rem;
+        border-radius: 22px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(247, 241, 233, 0.92));
+        border: 1px solid rgba(66, 55, 44, 0.08);
+      }
+
+      .roadmap-step strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--accent-cool);
+      }
+
+      .roadmap-step span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 860px) {
+        .page {
+          width: min(calc(100% - 1.2rem), 1120px);
+          padding: 1.3rem 0 2rem;
+        }
+
+        .hero,
+        .panel {
+          border-radius: 26px;
+        }
+
+        .hero-grid,
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding:
+            max(1rem, env(safe-area-inset-top))
+            env(safe-area-inset-right)
+            max(1.4rem, env(safe-area-inset-bottom))
+            env(safe-area-inset-left);
+        }
+
+        .goal-card-header {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="topbar">
+        <a class="crumb" href="../index.html" aria-label="Torna alla sezione Projects">
+          <span aria-hidden="true">←</span>
+          <span>Projects</span>
+        </a>
+      </div>
+
+      <section class="hero" aria-label="Introduzione alla sezione Obiettivi">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">Direzione</span>
+            <h1>Obiettivi</h1>
+            <p class="hero-copy">
+              Questa sezione ora presenta gli obiettivi come uno spazio strategico:
+              non piu una pagina vuota, ma una base visiva pronta per ospitare
+              traguardi personali, professionali e piani di crescita.
+            </p>
+          </div>
+
+          <div class="hero-side">
+            <div class="hero-stat">
+              <strong>3 aree</strong>
+              <span>personale, professionale e sviluppo continuo</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Roadmap pronta</strong>
+              <span>una struttura chiara per trasformare idee in azioni</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout" aria-label="Contenuto sezione Obiettivi">
+        <div class="panel">
+          <h2 class="panel-title">Spazio per i traguardi</h2>
+          <p class="panel-copy">
+            La pagina e stata ripensata per dare piu senso di avanzamento e
+            organizzazione, anche prima di inserire tutti i contenuti definitivi.
+          </p>
+
+          <div class="goal-grid">
+            <article class="goal-card">
+              <div class="goal-card-header">
+                <h3>Obiettivi personali</h3>
+                <span class="goal-tag">Benessere</span>
+              </div>
+              <p>Area pensata per raccogliere abitudini, disciplina quotidiana e crescita individuale.</p>
+            </article>
+
+            <article class="goal-card">
+              <div class="goal-card-header">
+                <h3>Obiettivi professionali</h3>
+                <span class="goal-tag">Carriera</span>
+              </div>
+              <p>Spazio dedicato a risultati concreti, avanzamento lavorativo e sviluppo progettuale.</p>
+            </article>
+
+            <article class="goal-card">
+              <div class="goal-card-header">
+                <h3>Obiettivi di apprendimento</h3>
+                <span class="goal-tag">Evoluzione</span>
+              </div>
+              <p>Una base per monitorare competenze da acquisire, corsi, studio e nuove direzioni.</p>
+            </article>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="Roadmap obiettivi">
+          <h2 class="panel-title">Roadmap</h2>
+          <p class="panel-copy">
+            Una lettura laterale che suggerisce come popolare questa pagina in
+            modo progressivo e ordinato.
+          </p>
+
+          <div class="roadmap">
+            <div class="roadmap-step">
+              <strong>1. Definire</strong>
+              <span>Inserire pochi obiettivi chiari e misurabili per ogni area.</span>
+            </div>
+            <div class="roadmap-step">
+              <strong>2. Ordinare</strong>
+              <span>Distinguere priorita, tempi e impatto per capire dove concentrare energie.</span>
+            </div>
+            <div class="roadmap-step">
+              <strong>3. Monitorare</strong>
+              <span>Trasformare la pagina in un punto di riferimento costante per il percorso.</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="footer">
+        <a href="../../index.html">KarimSaoud</a>
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="../../cookie.html">Cookie Policy</a>
+        <a href="../../note-legali.html">Note legali</a>
+        <a href="../../accessibilita.html">Accessibilita</a>
+      </div>
+    </main>
+  </body>
+</html>

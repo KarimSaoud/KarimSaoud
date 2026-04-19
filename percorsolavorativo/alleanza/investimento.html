@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investimento | Pitch | Karim Saoud</title>
+    <meta
+      name="description"
+      content="Pitch consulenziale sull'investimento: obiettivi, metodo, soluzioni e criteri per costruire un portafoglio coerente."
+    />
+    <link rel="icon" type="image/png" href="KS.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      :root {
+        --header-bg: rgb(255, 255, 255);
+        --header-border-color: rgba(12, 39, 82, 0.12);
+      }
+
+      body {
+        background: rgb(255, 255, 255);
+        color: rgb(12, 39, 82);
+      }
+
+      main {
+        width: min(1100px, calc(100vw - 32px));
+      }
+
+      main > section {
+        border-color: rgba(12, 39, 82, 0.12);
+        background: rgb(255, 255, 255);
+        box-shadow: 0 18px 40px rgba(12, 39, 82, 0.08);
+      }
+
+      h1 {
+        color: rgb(12, 39, 82);
+      }
+
+      h2,
+      h3,
+      h4 {
+        color: rgb(88, 153, 195);
+        font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+      }
+
+      h2 {
+        margin-top: 34px;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+      }
+
+      h3 {
+        margin-top: 28px;
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+      }
+
+      h4 {
+        margin: 0 0 10px;
+        font-size: 1.15rem;
+        line-height: 1.2;
+      }
+
+      p {
+        margin-top: 14px;
+        color: rgb(12, 39, 82);
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+      }
+
+      ul,
+      ol {
+        margin: 14px 0 0;
+        padding-left: 22px;
+        color: rgb(12, 39, 82);
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 18px;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 16px;
+        border: 1px solid rgba(12, 39, 82, 0.12);
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid rgba(12, 39, 82, 0.08);
+      }
+
+      th {
+        background: rgba(88, 153, 195, 0.18);
+        color: rgb(12, 39, 82);
+        font-weight: 700;
+      }
+
+      .lead {
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .info-box,
+      .product-card {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        background: rgba(88, 153, 195, 0.18);
+        color: rgb(12, 39, 82);
+      }
+
+      .highlight-grid,
+      .catalog-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .highlight-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .catalog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .eyebrow {
+        margin-bottom: 10px;
+        color: rgb(88, 153, 195);
+      }
+
+      .small-note {
+        margin-top: 16px;
+        font-size: 0.95rem;
+        color: rgba(12, 39, 82, 0.82);
+      }
+
+      .sources {
+        margin-top: 28px;
+        padding: 20px;
+        border-radius: 18px;
+        background: rgba(88, 153, 195, 0.18);
+      }
+
+      .pitch-hero {
+        display: grid;
+        gap: 18px;
+      }
+
+      .pitch-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin-top: 10px;
+      }
+
+      .pitch-chip {
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(88, 153, 195, 0.08), rgba(12, 39, 82, 0.04));
+        border: 1px solid rgba(12, 39, 82, 0.1);
+      }
+
+      .pitch-chip strong {
+        display: block;
+        margin-bottom: 8px;
+        color: rgb(12, 39, 82);
+      }
+
+      @media (max-width: 760px) {
+        main {
+          width: min(calc(100vw - 20px), 1100px);
+        }
+
+        main > section {
+          padding: 22px;
+        }
+
+        th,
+        td {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" id="top">
+        <div class="container nav-wrap">
+          <a class="brand" href="index.html" aria-label="Alleanza Assicurazioni">
+            <img class="brand-logo" src="alleanza.png" alt="Alleanza Assicurazioni" />
+            <span class="sr-only">Alleanza Assicurazioni</span>
+          </a>
+        </div>
+      </header>
+
+      <main>
+        <section>
+        <div class="pitch-hero">
+          <p class="eyebrow">Pitch Investimento</p>
+          <h1>Dare una direzione al capitale: dal denaro fermo a un portafoglio coerente</h1>
+          <p class="lead">
+            L'investimento non parte dallo strumento. Parte da una domanda semplice: che lavoro deve fare il tuo
+            capitale nei prossimi mesi, nei prossimi anni e nel lungo periodo? Il valore di questo pitch e proprio
+            qui: trasformare un catalogo tecnico in una proposta chiara, leggibile e orientata a obiettivi reali.
+          </p>
+          <p class="lead">
+            La logica e lineare: separare liquidita, reddito, crescita, protezione, previdenza e diversificazione;
+            poi scegliere i contenitori giusti tra strumenti di cassa, obbligazionari, azionari, fondi, polizze,
+            previdenza e soluzioni alternative. Non una lista di prodotti, ma una mappa per decidere meglio.
+          </p>
+        </div>
+
+        <div class="pitch-strip">
+          <div class="pitch-chip">
+            <strong>Orizzonte</strong>
+            Bisogni di giorni o mesi richiedono soluzioni molto diverse da obiettivi a 5, 10 o 20 anni.
+          </div>
+          <div class="pitch-chip">
+            <strong>Tolleranza al rischio</strong>
+            Conta quanto drawdown, volatilita e illiquidita una persona riesce davvero a sostenere.
+          </div>
+          <div class="pitch-chip">
+            <strong>Obiettivo finale</strong>
+            Liquidita, reddito, crescita, protezione, previdenza o diversificazione non si risolvono con lo stesso strumento.
+          </div>
+        </div>
+
+        <h2>Il punto di partenza</h2>
+        <p>
+          Il problema non e la mancanza di strumenti. E l'eccesso di opzioni senza un ordine. Il retail italiano si
+          muove tra depositi, obbligazioni, fondi, ETF, polizze, previdenza, alternativi e nuove aree come cripto,
+          ETP o crowdfunding. Senza metodo, il rischio e costruire un portafoglio incoerente: troppo liquido quando
+          servirebbe crescita, troppo aggressivo quando servirebbe stabilita, troppo complesso quando servirebbe controllo.
+        </p>
+
+        <div class="info-box">
+          <h4>Bussola di trasparenza</h4>
+          <p>
+            Per il retail europeo i riferimenti chiave restano il KID PRIIPs e le regole MiFID II su adeguatezza e
+            appropriatezza: il prodotto giusto non e quello con la promessa piu forte, ma quello coerente con profilo,
+            esperienza, capacita di sostenere perdite e obiettivo finale.
+          </p>
+        </div>
+
+        <h2>Il metodo</h2>
+        <p>
+          Questo pitch organizza tutte le principali soluzioni di investimento disponibili in Italia e in Europa in una
+          sequenza consulenziale semplice: prima si protegge la liquidita, poi si costruisce la parte reddito, poi si
+          cerca crescita, previdenza e diversificazione. Solo dopo, eventualmente, si entra in strumenti complessi,
+          alternativi o ad alto rischio.
+        </p>
+
+        <div class="highlight-grid">
+          <div class="info-box">
+            <h4>Quadro regolatorio</h4>
+            <p>MiFID II e MiFIR, PRIIPs, UCITS, AIFMD, Solvency II, IDD, EMIR e MiCA definiscono le regole del gioco.</p>
+          </div>
+          <div class="info-box">
+            <h4>Vigilanza e tutela</h4>
+            <p>In Italia il perimetro passa da TUF, TUB, Codice delle Assicurazioni Private, Consob, Banca d'Italia, IVASS, COVIP e Agenzia delle Entrate.</p>
+          </div>
+          <div class="info-box">
+            <h4>Protezione depositi</h4>
+            <p>Per i depositi bancari esiste una protezione legale fino a 100.000 euro per depositante e per banca.</p>
+          </div>
+        </div>
+
+        <h2>La proposta: costruire il portafoglio per blocchi</h2>
+        <p>
+          Le famiglie di strumenti qui sotto non vanno lette come alternative isolate, ma come blocchi da combinare in
+          funzione del ruolo che ogni euro deve svolgere.
+        </p>
+
+        <h3>1. Blocchi di liquidita e cash management</h3>
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h4>Depositi bancari</h4>
+            <p>Base della riserva di emergenza e degli obiettivi entro 0-24 mesi. Liquidita alta nei conti liberi, media nei vincolati, rischio in genere basso ma legato a banca e vincoli contrattuali.</p>
+          </article>
+          <article class="product-card">
+            <h4>Certificati di deposito</h4>
+            <p>Strumenti a scadenza per investitori prudenti. La forma tecnica incide su tutela, liquidita e bail-in; il profilo di rischio resta basso o medio a seconda della struttura.</p>
+          </article>
+          <article class="product-card">
+            <h4>Pronti contro termine</h4>
+            <p>Utili nella gestione di cassa per settimane o mesi. La presenza di collateral non elimina il rischio controparte e i profili contrattuali.</p>
+          </article>
+          <article class="product-card">
+            <h4>Risparmio postale e fondi monetari</h4>
+            <p>Libretti, buoni fruttiferi e MMF servono alla parte prudente del patrimonio e alla gestione della cassa oltre il semplice deposito.</p>
+          </article>
+        </div>
+
+        <h3>2. Blocchi di reddito fisso</h3>
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h4>Titoli di Stato</h4>
+            <p>Utili per profili prudenti e per costruire scalette di scadenza. Il rischio e da basso a medio per effetto tassi e rischio sovrano.</p>
+          </article>
+          <article class="product-card">
+            <h4>Corporate, covered e sovranazionali</h4>
+            <p>Ampliano la componente reddito e credito del portafoglio. Maggiore rendimento spesso significa maggiore rischio emittente, duration o subordinazione.</p>
+          </article>
+          <article class="product-card">
+            <h4>Green, social e sustainability-linked bond</h4>
+            <p>Introducono una logica ESG ma vanno valutati come obbligazioni vere: l'etichetta sostenibile non sostituisce l'analisi del merito di credito.</p>
+          </article>
+        </div>
+
+        <h3>3. Blocchi di crescita</h3>
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h4>Azioni quotate</h4>
+            <p>Strumento base per la crescita di lungo periodo, adatto soprattutto oltre i 5-10 anni. Rischio alto, con volatilita significativa e drawdown profondi.</p>
+          </article>
+          <article class="product-card">
+            <h4>Azioni non quotate e partecipazioni private</h4>
+            <p>Espongono a potenziale rendimento elevato e forte illiquidita. Richiedono patrimonio, esperienza e capacita di attesa; il rischio e molto alto.</p>
+          </article>
+          <article class="product-card">
+            <h4>ETF UCITS</h4>
+            <p>Fondi quotati indicizzati, spesso efficienti per costruzione core, PAC e investimenti disciplinati. Il rischio varia in base al sottostante.</p>
+          </article>
+          <article class="product-card">
+            <h4>ETC ed ETN</h4>
+            <p>Esposizione quotata a commodity, indici o altri sottostanti. Negli ETN il rischio emittente e centrale; sono strumenti piu tattici che di base.</p>
+          </article>
+        </div>
+
+        <h3>4. Blocchi di delega e gestione</h3>
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h4>Fondi UCITS e SICAV</h4>
+            <p>Gestione professionale diversificata con regole armonizzate europee. Adatti a chi vuole delega e accesso semplice a mercati e strategie.</p>
+          </article>
+          <article class="product-card">
+            <h4>FIA, AIF e alternativi retail</h4>
+            <p>Strategie piu ampie, spesso meno liquide e piu complesse dei fondi UCITS. Possono includere credito, real asset, absolute return e mercati privati.</p>
+          </article>
+          <article class="product-card">
+            <h4>Gestione di portafogli e robo-advisory</h4>
+            <p>Consentono delega e ribilanciamento automatico secondo regole definite. Il livello di rischio dipende dalla linea scelta e dagli strumenti usati.</p>
+          </article>
+          <article class="product-card">
+            <h4>Consulenza finanziaria, wealth management e private banking</h4>
+            <p>Il valore non sta nello strumento isolato ma nella coerenza tra profilo, obiettivi, fiscalita, protezione e pianificazione patrimoniale.</p>
+          </article>
+        </div>
+
+        <h3>5. Blocchi alternativi e private markets</h3>
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h4>Private equity, venture capital e private debt</h4>
+            <p>Cuore del private market europeo: orizzonte lungo, capitale poco liquido, rischio alto o molto alto. Adatti a investitori evoluti o tramite veicoli selezionati.</p>
+          </article>
+          <article class="product-card">
+            <h4>ELTIF, hedge fund e fondi immobiliari</h4>
+            <p>Gli ELTIF puntano sull'economia reale; gli hedge fund cercano decorrelazione; i fondi immobiliari aggiungono real asset ma con liquidita ridotta.</p>
+          </article>
+          <article class="product-card">
+            <h4>Crowdfunding, equity e lending</h4>
+            <p>Permettono di investire o finanziare imprese via piattaforme autorizzate, ma richiedono forte diversificazione per il rischio elevato di default o insuccesso.</p>
+          </article>
+          <article class="product-card">
+            <h4>Real assets e beni rifugio</h4>
+            <p>Oro e metalli preziosi possono servire come quota di diversificazione; arte, collezionabili e passion investments hanno senso piu come estensione patrimoniale; ILS e cat bond restano strumenti specialistici.</p>
+          </article>
+        </div>
+
+        <h3>6. Blocchi previdenziali e assicurativi</h3>
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h4>Fondi pensione, PIP e PEPP</h4>
+            <p>Strumenti di lungo periodo orientati alla pensione integrativa, con vantaggi fiscali e regole specifiche su anticipazioni, trasferimenti e prestazioni.</p>
+          </article>
+          <article class="product-card">
+            <h4>Polizze ramo I, unit-linked, index-linked e multiramo</h4>
+            <p>Wrapper assicurativi che combinano protezione, fiscalita e investimento. La differenza sostanziale sta in quanto rischio di mercato resta in capo al cliente.</p>
+          </article>
+        </div>
+
+        <h3>7. Blocchi complessi e ad alto rischio</h3>
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h4>Prodotti strutturati, certificates e capitale protetto</h4>
+            <p>Combinano componente obbligazionaria e derivativa con payoff non lineari. Vanno letti in termini di barriere, cap, scenari e rischio emittente.</p>
+          </article>
+          <article class="product-card">
+            <h4>Derivati e CFD</h4>
+            <p>Utili soprattutto per copertura o operativita speculativa. Richiedono piena comprensione di leva, margini e possibili perdite rapide.</p>
+          </article>
+          <article class="product-card">
+            <h4>Cripto-attivita dirette e crypto ETP</h4>
+            <p>Espongono a rischio prezzo, rischio tecnologico, custodia e struttura dello strumento. MiCA porta ordine normativo, ma non elimina la volatilita.</p>
+          </article>
+        </div>
+
+        <h2>Fiscalita e operativita</h2>
+        <p>
+          La fiscalita italiana conta quasi quanto lo strumento: molte rendite finanziarie ricadono nell'area del 26%,
+          i titoli pubblici e categorie assimilate nel 12,5%, il bollo su strumenti finanziari si muove intorno allo
+          0,2% annuo, le attivita estere richiedono monitoraggio con quadro RW e IVAFE, mentre le cripto-attivita
+          seguono una disciplina dedicata. In pratica, amministrato, gestito o dichiarativo possono cambiare il risultato finale.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Tema</th>
+              <th>Regola base indicativa</th>
+              <th>Impatto operativo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rendite finanziarie standard</td>
+              <td>26%</td>
+              <td>Molti strumenti finanziari, interessi, dividendi e plusvalenze secondo il regime applicabile.</td>
+            </tr>
+            <tr>
+              <td>Titoli pubblici ed equiparati</td>
+              <td>12,5%</td>
+              <td>Area agevolata legata a titoli di Stato e categorie assimilate.</td>
+            </tr>
+            <tr>
+              <td>Bollo su strumenti finanziari</td>
+              <td>Ordine di grandezza 0,2% annuo</td>
+              <td>Dossier titoli e strumenti detenuti presso intermediari residenti.</td>
+            </tr>
+            <tr>
+              <td>Attivita finanziarie estere</td>
+              <td>Quadro RW + IVAFE</td>
+              <td>Monitoraggio e imposta sulle attivita finanziarie detenute all'estero.</td>
+            </tr>
+            <tr>
+              <td>Cripto-attivita</td>
+              <td>Disciplina dedicata</td>
+              <td>Regole specifiche da seguire con attenzione caso per caso.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="small-note">Nota operativa: leggere costi, fiscalita, vincoli di uscita e trattamento successorio cambia il rendimento reale quanto la scelta dello strumento.</p>
+
+        <h2>Come si legge correttamente una soluzione di investimento</h2>
+        <div class="info-box">
+          <ol>
+            <li>Definire il tempo reale a disposizione prima di usare il capitale.</li>
+            <li>Separare la quota di emergenza dalla quota investibile.</li>
+            <li>Misurare il rischio sulla perdita tollerabile, non solo sul rendimento atteso.</li>
+            <li>Leggere sempre costi, vincoli di uscita, fiscalita e trattamento successorio.</li>
+            <li>Valutare il wrapper: consulenza, gestione, fondo, polizza o piano previdenziale cambiano il risultato finale.</li>
+          </ol>
+        </div>
+
+        <div class="sources">
+          <h2>Fonti principali</h2>
+          <ul>
+            <li>MiFID II e MiFIR per servizi di investimento, mercati e regole di condotta.</li>
+            <li>PRIIPs per KID e trasparenza sui prodotti preassemblati destinati al retail.</li>
+            <li>UCITS e AIFMD per fondi armonizzati e fondi alternativi.</li>
+            <li>Solvency II e IDD per prodotti assicurativi e IBIP.</li>
+            <li>EMIR per derivati OTC e MiCA per cripto-attivita.</li>
+            <li>TUF, TUB, Codice delle Assicurazioni Private e disciplina fiscale italiana sui redditi finanziari.</li>
+            <li>Garanzia sui depositi fino a 100.000 euro per depositante e per banca, con relative regole sul bail-in.</li>
+          </ul>
+        </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-wrap">
+          <a href="../../index.html">KarimSaoud</a>
+          <div class="footer-links">
+            <a href="../../privacy.html">Privacy Policy</a>
+            <a href="../../cookie.html">Cookie Policy</a>
+            <a href="../../note-legali.html">Note legali</a>
+            <a href="../../accessibilita.html">Accessibilita</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Personalità | KarimSaoud</title>
+    <meta
+      name="description"
+      content="Sezione dedicata a Personalità all'interno dell'hub Project di Karim Saoud."
+    />
+    <link rel="icon" type="image/png" href="../../../KS.png" />
+    <style>
+      :root {
+        --bg: #f2e8df;
+        --panel: linear-gradient(180deg, rgba(255, 251, 247, 0.92), rgba(248, 239, 231, 0.84));
+        --surface: rgba(255, 253, 250, 0.76);
+        --surface-strong: rgba(255, 255, 255, 0.9);
+        --border: rgba(70, 54, 44, 0.12);
+        --border-strong: rgba(70, 54, 44, 0.24);
+        --text: #1f1915;
+        --muted: #685d56;
+        --accent: #8a4b2f;
+        --accent-cool: #2f5d73;
+        --accent-soft: rgba(138, 75, 47, 0.1);
+        --shadow: 0 28px 70px rgba(44, 61, 74, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 12% 0%, rgba(138, 75, 47, 0.18), transparent 24%),
+          radial-gradient(circle at 88% 12%, rgba(47, 93, 115, 0.16), transparent 24%),
+          linear-gradient(180deg, #fcf8f3 0%, var(--bg) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      .page {
+        width: min(calc(100% - 2rem), 1120px);
+        margin: 0 auto;
+        padding: 2rem 0 2.4rem;
+      }
+
+      .topbar {
+        margin-bottom: 1.2rem;
+      }
+
+      .crumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.56);
+        color: var(--muted);
+        backdrop-filter: blur(14px);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .crumb:hover,
+      .crumb:focus-visible {
+        transform: translateY(-2px);
+        border-color: var(--border-strong);
+        background: rgba(255, 255, 255, 0.76);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        width: 20rem;
+        height: 20rem;
+        top: -9rem;
+        right: -5rem;
+        background: radial-gradient(circle, rgba(47, 93, 115, 0.18), transparent 68%);
+      }
+
+      .hero::after {
+        width: 18rem;
+        height: 18rem;
+        bottom: -8rem;
+        left: -4rem;
+        background: radial-gradient(circle, rgba(138, 75, 47, 0.14), transparent 72%);
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+        gap: 1.4rem;
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 0.85rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+        letter-spacing: -0.05em;
+      }
+
+      h1 {
+        margin-top: 0.85rem;
+        font-size: clamp(3rem, 7vw, 5.3rem);
+        line-height: 0.94;
+        color: var(--accent-cool);
+        text-wrap: balance;
+      }
+
+      .hero-copy {
+        width: min(100%, 42rem);
+        margin: 1rem 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .hero-stat {
+        padding: 1rem 1.1rem;
+        border: 1px solid rgba(47, 93, 115, 0.14);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.74);
+      }
+
+      .hero-stat strong {
+        display: block;
+        font-size: 1.85rem;
+        line-height: 1;
+        color: var(--accent-cool);
+      }
+
+      .hero-stat span {
+        display: block;
+        margin-top: 0.45rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .panel {
+        padding: 1.35rem;
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        background: var(--surface);
+        box-shadow: 0 20px 50px rgba(44, 61, 74, 0.1);
+        backdrop-filter: blur(14px);
+      }
+
+      .panel-title {
+        font-size: clamp(1.7rem, 4vw, 2.35rem);
+        color: #2c4658;
+      }
+
+      .panel-copy {
+        margin-top: 0.7rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .stepper-list {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1.1rem;
+      }
+
+      .stepper {
+        padding: 1rem;
+        border: 1px solid rgba(70, 54, 44, 0.1);
+        border-radius: 24px;
+        background: var(--surface-strong);
+      }
+
+      .stepper-label {
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #3c342f;
+      }
+
+      .stepper-controls {
+        display: grid;
+        grid-template-columns: 56px minmax(0, 1fr) 56px;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .stepper-button {
+        min-height: 56px;
+        border: none;
+        border-radius: 18px;
+        background: linear-gradient(180deg, #214f76, #173e5f);
+        color: #fffaf5;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .stepper-button:hover,
+      .stepper-button:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(23, 62, 95, 0.2);
+      }
+
+      .stepper-value {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;
+        padding: 0.9rem 1rem;
+        border: 1px solid rgba(47, 93, 115, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.88);
+        text-align: center;
+        font-weight: 700;
+        color: var(--accent-cool);
+      }
+
+      .insight-list {
+        display: grid;
+        gap: 0.85rem;
+        margin-top: 1rem;
+      }
+
+      .insight {
+        padding: 1rem;
+        border-radius: 22px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 242, 235, 0.92));
+        border: 1px solid rgba(70, 54, 44, 0.08);
+      }
+
+      .insight strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--accent);
+      }
+
+      .insight span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 860px) {
+        .page {
+          width: min(calc(100% - 1.2rem), 1120px);
+          padding: 1.3rem 0 2rem;
+        }
+
+        .hero,
+        .panel {
+          border-radius: 26px;
+        }
+
+        .hero-grid,
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding:
+            max(1rem, env(safe-area-inset-top))
+            env(safe-area-inset-right)
+            max(1.4rem, env(safe-area-inset-bottom))
+            env(safe-area-inset-left);
+        }
+
+        .stepper-controls {
+          grid-template-columns: 48px minmax(0, 1fr) 48px;
+          gap: 0.55rem;
+        }
+
+        .stepper-button,
+        .stepper-value {
+          min-height: 52px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="topbar">
+        <a class="crumb" href="../index.html" aria-label="Torna alla sezione App-Software">
+          <span aria-hidden="true">←</span>
+          <span>App-Software</span>
+        </a>
+      </div>
+
+      <section class="hero" aria-label="Introduzione alla sezione Personalità">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">Profilo identitario</span>
+            <h1>Personalità</h1>
+            <p class="hero-copy">
+              Una sezione pensata per esplorare elementi identitari in modo semplice,
+              ordinato e interattivo, con controlli piu leggibili e una gerarchia
+              visiva che rende il contenuto meno tecnico e piu umano.
+            </p>
+          </div>
+
+          <div class="hero-side">
+            <div class="hero-stat">
+              <strong>3</strong>
+              <span>stepper tematici disponibili nella pagina</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Interazione chiara</strong>
+              <span>controlli grandi, feedback visivo e lettura migliorata</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout" aria-label="Contenuto sezione Personalità">
+        <div class="panel">
+          <h2 class="panel-title">Stepper identitari</h2>
+          <p class="panel-copy">
+            Usa i controlli per scorrere le opzioni disponibili per sesso,
+            religione e orientamento sessuale in un layout piu leggibile sia su
+            desktop sia su mobile.
+          </p>
+
+          <div class="stepper-list">
+            <article class="stepper" data-options='["Maschile", "Femminile", "Non binario", "Preferisco non dirlo"]'>
+              <div class="stepper-label">Sesso</div>
+              <div class="stepper-controls">
+                <button class="stepper-button" type="button" data-step="-1" aria-label="Valore precedente per Sesso">-</button>
+                <div class="stepper-value" aria-live="polite">Maschile</div>
+                <button class="stepper-button" type="button" data-step="1" aria-label="Valore successivo per Sesso">+</button>
+              </div>
+            </article>
+
+            <article class="stepper" data-options='["Cristianesimo", "Islam", "Ebraismo", "Induismo", "Buddismo", "Agnosticismo", "Ateismo", "Preferisco non dirlo"]'>
+              <div class="stepper-label">Religione</div>
+              <div class="stepper-controls">
+                <button class="stepper-button" type="button" data-step="-1" aria-label="Valore precedente per Religione">-</button>
+                <div class="stepper-value" aria-live="polite">Cristianesimo</div>
+                <button class="stepper-button" type="button" data-step="1" aria-label="Valore successivo per Religione">+</button>
+              </div>
+            </article>
+
+            <article class="stepper" data-options='["Eterosessuale", "Omosessuale", "Bisessuale", "Pansessuale", "Asessuale", "Preferisco non dirlo"]'>
+              <div class="stepper-label">Orientamento Sessuale</div>
+              <div class="stepper-controls">
+                <button class="stepper-button" type="button" data-step="-1" aria-label="Valore precedente per Orientamento Sessuale">-</button>
+                <div class="stepper-value" aria-live="polite">Eterosessuale</div>
+                <button class="stepper-button" type="button" data-step="1" aria-label="Valore successivo per Orientamento Sessuale">+</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="Contesto della sezione Personalità">
+          <h2 class="panel-title">Lettura rapida</h2>
+          <p class="panel-copy">
+            La pagina ora accompagna meglio l'esplorazione del contenuto, senza
+            lasciare i controlli isolati nello spazio.
+          </p>
+
+          <div class="insight-list">
+            <div class="insight">
+              <strong>Gerarchia visiva</strong>
+              <span>Titoli, pannelli e stepper hanno ora pesi e spazi piu coerenti.</span>
+            </div>
+            <div class="insight">
+              <strong>Usabilita</strong>
+              <span>I pulsanti sono piu grandi e il valore attivo e immediatamente leggibile.</span>
+            </div>
+            <div class="insight">
+              <strong>Responsive</strong>
+              <span>Il layout si adatta a schermi stretti senza comprimere il contenuto.</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="footer">
+        <a href="../../../index.html">KarimSaoud</a>
+        <a href="../../../privacy.html">Privacy Policy</a>
+        <a href="../../../cookie.html">Cookie Policy</a>
+        <a href="../../../note-legali.html">Note legali</a>
+        <a href="../../../accessibilita.html">Accessibilita</a>
+      </div>
+    </main>
+
+    <script src="../../../assets/js/stepper.js"></script>
+  </body>
+</html>
