@@ -1,5 +1,5 @@
 const CACHE_NAME = "posing-caller-v1";
-const APP_SHELL = ["/", "/manifest.webmanifest", "/icon", "/apple-icon"];
+const APP_SHELL = ["/", "/manifest.webmanifest", "/KS.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -40,7 +40,7 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(request, cloned)).catch(() => undefined);
           return response;
         })
-        .catch(() => caches.match("/icon").then((fallback) => fallback || Response.error()));
+        .catch(() => caches.match("/KS.png").then((fallback) => fallback || Response.error()));
     }),
   );
 });

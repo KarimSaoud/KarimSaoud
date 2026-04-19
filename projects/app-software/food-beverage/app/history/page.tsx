@@ -8,7 +8,8 @@ import { useFoodLogStore } from "@/store/use-food-log-store";
 export default function HistoryPage() {
   const hydrated = useHydrated();
   const dayLogs = useFoodLogStore((state) => state.dayLogs);
-  const duplicateDay = useFoodLogStore((state) => state.duplicateDay);
+  const measurementHistory = useFoodLogStore((state) => state.measurementHistory);
+  const ensureDay = useFoodLogStore((state) => state.ensureDay);
 
   if (!hydrated) {
     return null;
@@ -17,11 +18,14 @@ export default function HistoryPage() {
   return (
     <AppShell currentPath="/history">
       <section className="mb-6">
-        <p className="text-sm text-muted-foreground">Storico e andamento</p>
-        <h2 className="mt-1 text-2xl font-semibold">Settimana recente</h2>
+        <h2 className="text-2xl font-semibold">Storico e futuro</h2>
       </section>
 
-      <HistoryOverview logs={dayLogs} onDuplicate={duplicateDay} />
+      <HistoryOverview
+        logs={dayLogs}
+        measurementHistory={measurementHistory}
+        onEnsureDay={ensureDay}
+      />
     </AppShell>
   );
 }

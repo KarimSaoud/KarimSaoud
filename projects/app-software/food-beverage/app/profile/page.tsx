@@ -14,8 +14,7 @@ export default function ProfilePage() {
   return (
     <AppShell currentPath="/profile">
       <section className="mb-6">
-        <p className="text-sm text-muted-foreground">Profilo personale</p>
-        <h2 className="mt-1 text-2xl font-semibold">Anagrafica, storico e documenti sanitari</h2>
+        <h2 className="text-2xl font-semibold">Anagrafica e documenti</h2>
       </section>
 
       <ProfileHub />

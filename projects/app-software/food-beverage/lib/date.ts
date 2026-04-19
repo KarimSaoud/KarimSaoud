@@ -25,11 +25,15 @@ export function calculateAgeFromBirthDate(birthDate: string, today = new Date())
 }
 
 export function formatFullDate(dateKey: string) {
-  return new Intl.DateTimeFormat("it-IT", {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-  }).format(new Date(`${dateKey}T12:00:00`));
+  const date = new Date(`${dateKey}T12:00:00`);
+  const weekday = new Intl.DateTimeFormat("it-IT", { weekday: "long" }).format(date);
+  const numericDate = new Intl.DateTimeFormat("it-IT", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  }).format(date);
+
+  return `${weekday} ${numericDate}`;
 }
 
 export function formatDateTime(value: string) {

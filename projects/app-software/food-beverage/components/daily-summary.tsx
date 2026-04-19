@@ -1,112 +1,218 @@
-import { ComponentType } from "react";
-import { Droplets, Flame, Salad, Wheat } from "lucide-react";
+"use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { DEFAULT_SETTINGS, MEAL_LABELS, MEAL_ORDER } from "@/lib/constants";
 import { formatNumber, formatNutrient } from "@/lib/utils";
-import { DayLog } from "@/types";
+import { useFoodLogStore } from "@/store/use-food-log-store";
+import { DayLog, UserSettings } from "@/types";
 
-import { MacroBar } from "@/components/macro-bar";
+type GoalKey = keyof Pick<
+  UserSettings,
+  "waterTargetMl" | "calorieTarget" | "fatTarget" | "saturatedFatTarget" | "carbsTarget" | "sugarsTarget" | "fiberTarget"
+>;
+
+const goalRows: Array<{
+  key: GoalKey;
+  label: string;
+  unit: "ml" | "kcal" | "g";
+  getValue: (dayLog: DayLog) => number;
+}> = [
+  {
+    key: "waterTargetMl",
+    label: "Acqua",
+    unit: "ml",
+    getValue: (dayLog) => dayLog.summary.waterMl
+  },
+  {
+    key: "calorieTarget",
+    label: "Kcal",
+    unit: "kcal",
+    getValue: (dayLog) => dayLog.summary.nutrients.calories
+  },
+  {
+    key: "fatTarget",
+    label: "Grassi",
+    unit: "g",
+    getValue: (dayLog) => dayLog.summary.nutrients.fat
+  },
+  {
+    key: "saturatedFatTarget",
+    label: "Saturi",
+    unit: "g",
+    getValue: (dayLog) => dayLog.summary.nutrients.saturatedFat
+  },
+  {
+    key: "carbsTarget",
+    label: "Carboidrati",
+    unit: "g",
+    getValue: (dayLog) => dayLog.summary.nutrients.carbs
+  },
+  {
+    key: "sugarsTarget",
+    label: "Zuccheri",
+    unit: "g",
+    getValue: (dayLog) => dayLog.summary.nutrients.sugars
+  },
+  {
+    key: "fiberTarget",
+    label: "Fibre",
+    unit: "g",
+    getValue: (dayLog) => dayLog.summary.nutrients.fiber
+  }
+];
+
+const microRows: Array<{
+  label: string;
+  unit: "mg" | "mcg";
+  getValue: (dayLog: DayLog) => number | undefined;
+}> = [
+  { label: "Sodio", unit: "mg", getValue: (dayLog) => dayLog.summary.nutrients.sodium },
+  { label: "Calcio", unit: "mg", getValue: (dayLog) => dayLog.summary.nutrients.calcium },
+  { label: "Ferro", unit: "mg", getValue: (dayLog) => dayLog.summary.nutrients.iron },
+  { label: "Potassio", unit: "mg", getValue: (dayLog) => dayLog.summary.nutrients.potassium },
+  { label: "Magnesio", unit: "mg", getValue: (dayLog) => dayLog.summary.nutrients.magnesium },
+  { label: "Vitamina C", unit: "mg", getValue: (dayLog) => dayLog.summary.nutrients.vitaminC },
+  { label: "Vitamina D", unit: "mcg", getValue: (dayLog) => dayLog.summary.nutrients.vitaminD },
+  { label: "Vitamina B12", unit: "mcg", getValue: (dayLog) => dayLog.summary.nutrients.vitaminB12 }
+];
 
 export function DailySummary({ dayLog }: { dayLog: DayLog }) {
-  const summary = dayLog.summary;
-  const macroTotal = summary.nutrients.protein + summary.nutrients.carbs + summary.nutrients.fat;
-  const proteinPct = macroTotal ? (summary.nutrients.protein * 4 * 100) / (summary.nutrients.calories || 1) : 0;
-  const carbsPct = macroTotal ? (summary.nutrients.carbs * 4 * 100) / (summary.nutrients.calories || 1) : 0;
-  const fatPct = macroTotal ? (summary.nutrients.fat * 9 * 100) / (summary.nutrients.calories || 1) : 0;
+  const settings = useFoodLogStore((state) => state.settings);
+  const updateSettings = useFoodLogStore((state) => state.updateSettings);
+
+  const handleGoalChange = (key: GoalKey, value: string) => {
+    const parsed = Number(value);
+    updateSettings({ [key]: Number.isFinite(parsed) && parsed >= 0 ? parsed : 0 });
+  };
 
   return (
-    <section className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+    <section>
       <Card>
         <CardHeader>
           <CardTitle>Riepilogo giornaliero</CardTitle>
-          <CardDescription>Totali automatici di macro, micronutrienti e acqua.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-5">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatTile icon={Flame} label="Calorie" value={`${formatNumber(summary.nutrients.calories)} kcal`} />
-            <StatTile icon={Salad} label="Proteine" value={formatNutrient(summary.nutrients.protein)} />
-            <StatTile icon={Wheat} label="Carboidrati" value={formatNutrient(summary.nutrients.carbs)} />
-            <StatTile icon={Droplets} label="Acqua" value={`${formatNumber(summary.waterMl)} ml`} />
-          </div>
+        <CardContent className="space-y-3">
+          {goalRows.map((row) => {
+            const value = row.getValue(dayLog);
+            const target = settings[row.key];
+            const percentage = target > 0 ? (value / target) * 100 : 0;
 
-          <div className="space-y-4">
-            <MacroBar label={`Proteine ${formatNumber(proteinPct, 0)}%`} value={summary.nutrients.protein} total={DEFAULT_SETTINGS.proteinTarget} />
-            <MacroBar label={`Carboidrati ${formatNumber(carbsPct, 0)}%`} value={summary.nutrients.carbs} total={DEFAULT_SETTINGS.carbsTarget} />
-            <MacroBar label={`Grassi ${formatNumber(fatPct, 0)}%`} value={summary.nutrients.fat} total={DEFAULT_SETTINGS.fatTarget} />
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            <MetricLine label="Fibre" value={formatNutrient(summary.nutrients.fiber)} />
-            <MetricLine label="Sale" value={formatNutrient(summary.nutrients.salt)} />
-            <MetricLine label="Zuccheri" value={formatNutrient(summary.nutrients.sugars)} />
-            <MetricLine label="Grassi saturi" value={formatNutrient(summary.nutrients.saturatedFat)} />
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Distribuzione della giornata</CardTitle>
-          <CardDescription>Quota calorie per pasto e micronutrienti disponibili.</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-5">
-          <div className="space-y-3">
-            {MEAL_ORDER.map((mealType) => {
-              const calories = summary.caloriesByMeal[mealType];
-              const percentage = summary.nutrients.calories ? (calories / summary.nutrients.calories) * 100 : 0;
-              return (
-                <div key={mealType} className="space-y-1.5">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{MEAL_LABELS[mealType]}</span>
-                    <span className="font-medium">{formatNumber(calories)} kcal</span>
-                  </div>
-                  <Progress value={percentage} />
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="grid gap-2 rounded-[24px] bg-secondary/70 p-4 text-sm">
-            <MetricLine label="Sodio" value={formatNutrient(summary.nutrients.sodium, "mg")} />
-            <MetricLine label="Calcio" value={formatNutrient(summary.nutrients.calcium, "mg")} />
-            <MetricLine label="Ferro" value={formatNutrient(summary.nutrients.iron, "mg")} />
-            <MetricLine label="Potassio" value={formatNutrient(summary.nutrients.potassium, "mg")} />
-            <MetricLine label="Magnesio" value={formatNutrient(summary.nutrients.magnesium, "mg")} />
-            <MetricLine label="Vitamina C" value={formatNutrient(summary.nutrients.vitaminC, "mg")} />
-            <MetricLine label="Vitamina D" value={formatNutrient(summary.nutrients.vitaminD, "mcg")} />
-            <MetricLine label="Vitamina B12" value={formatNutrient(summary.nutrients.vitaminB12, "mcg")} />
-          </div>
+            return (
+              <GoalProgressRow
+                key={row.key}
+                label={row.label}
+                unit={row.unit}
+                value={value}
+                target={target}
+                percentage={percentage}
+                onTargetChange={(nextValue) => handleGoalChange(row.key, nextValue)}
+              />
+            );
+          })}
+          <MicroDropdown dayLog={dayLog} />
         </CardContent>
       </Card>
     </section>
   );
 }
 
-function StatTile({
-  icon: Icon,
-  label,
-  value
-}: {
-  icon: ComponentType<{ className?: string }>;
-  label: string;
-  value: string;
-}) {
+function MicroDropdown({ dayLog }: { dayLog: DayLog }) {
+  const [selectedMicroRows, setSelectedMicroRows] = useState(() => microRows.map((row) => row.label));
+  const selectedCount = selectedMicroRows.length;
+
+  const toggleMicroRow = (label: string) => {
+    setSelectedMicroRows((current) =>
+      current.includes(label) ? current.filter((item) => item !== label) : [...current, label]
+    );
+  };
+
   return (
-    <div className="rounded-[24px] bg-secondary/70 p-4">
-      <Icon className="mb-3 h-4 w-4 text-muted-foreground" />
-      <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">{label}</p>
-      <p className="mt-2 text-lg font-semibold">{value}</p>
-    </div>
+    <details className="group grid gap-2">
+      <summary className="grid cursor-pointer list-none grid-cols-[minmax(0,1fr)_5.5rem] items-center gap-3 [&::-webkit-details-marker]:hidden">
+        <div className="min-w-0">
+          <div className="flex items-baseline justify-between gap-2">
+            <p className="truncate text-sm font-medium">Micro</p>
+            <p className="shrink-0 text-xs text-muted-foreground">
+              {selectedCount}/{microRows.length} valori
+            </p>
+          </div>
+          <div className="mt-1.5 h-2 rounded-full bg-secondary">
+            <div
+              className="h-full rounded-full bg-primary transition-all"
+              style={{ width: `${(selectedCount / microRows.length) * 100}%` }}
+            />
+          </div>
+        </div>
+        <span className="flex h-8 items-center justify-center rounded-lg border border-input bg-white text-muted-foreground">
+          <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
+        </span>
+      </summary>
+      <div className="ml-0 grid gap-2 rounded-lg bg-secondary/50 p-3 text-sm">
+        {microRows.map((row) => (
+          <label key={row.label} className="flex items-center justify-between gap-3">
+            <span className="flex min-w-0 items-center gap-2">
+              <input
+                type="checkbox"
+                checked={selectedMicroRows.includes(row.label)}
+                onChange={() => toggleMicroRow(row.label)}
+                className="h-4 w-4 rounded border-border accent-primary"
+              />
+              <span className="truncate text-muted-foreground">{row.label}</span>
+            </span>
+            <span className="shrink-0 font-medium">{formatNutrient(row.getValue(dayLog), row.unit)}</span>
+          </label>
+        ))}
+      </div>
+    </details>
   );
 }
 
-function MetricLine({ label, value }: { label: string; value: string }) {
+function GoalProgressRow({
+  label,
+  unit,
+  value,
+  target,
+  percentage,
+  onTargetChange
+}: {
+  label: string;
+  unit: "ml" | "kcal" | "g";
+  value: number;
+  target: number;
+  percentage: number;
+  onTargetChange: (value: string) => void;
+}) {
+  const digits = unit === "g" && value < 10 ? 1 : 0;
+
   return (
-    <div className="flex items-center justify-between gap-4">
-      <span className="text-muted-foreground">{label}</span>
-      <span className="font-medium">{value}</span>
+    <div className="grid gap-2">
+      <div className="grid grid-cols-[minmax(0,1fr)_5.5rem] items-center gap-3">
+        <div className="min-w-0">
+          <div className="flex items-baseline justify-between gap-2">
+            <p className="truncate text-sm font-medium">{label}</p>
+            <p className="shrink-0 text-xs text-muted-foreground">
+              {formatNumber(value, digits)} / {formatNumber(target, unit === "g" && target < 10 ? 1 : 0)} {unit}
+            </p>
+          </div>
+          <Progress value={percentage} className="mt-1.5 h-2" />
+        </div>
+        <label className="grid text-[0.68rem] text-muted-foreground">
+          <span className="sr-only">Obiettivo {label}</span>
+          <Input
+            type="number"
+            inputMode="decimal"
+            min={0}
+            step={unit === "g" ? 1 : 50}
+            value={target}
+            onChange={(event) => onTargetChange(event.target.value)}
+            className="h-8 rounded-lg px-2 text-right text-xs"
+          />
+        </label>
+      </div>
     </div>
   );
 }

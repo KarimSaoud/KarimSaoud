@@ -3,11 +3,7 @@ const CACHE_NAME = "food-beverage-pwa-v1";
 const CORE_ASSETS = [
   "/",
   "/manifest.webmanifest",
-  "/favicon.svg",
-  "/icons/app-icon.svg",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png",
-  "/icons/apple-touch-icon.png"
+  "/KS.png"
 ];
 
 self.addEventListener("install", (event) => {

@@ -86,6 +86,8 @@ export type UserSettings = {
   proteinTarget: number;
   carbsTarget: number;
   fatTarget: number;
+  saturatedFatTarget: number;
+  sugarsTarget: number;
   fiberTarget: number;
   waterTargetMl: number;
 };
@@ -94,6 +96,7 @@ export type UserProfile = {
   firstName: string;
   lastName: string;
   birthDate: string;
+  birthPlace: string;
   heightCm: number | null;
   weightKg: number | null;
   goalWeightKg: number | null;

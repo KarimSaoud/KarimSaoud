@@ -5,6 +5,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Profilazione Cliente Premium",
   description: "Wizard consulenziale per clienti finanziari e assicurativi",
+  icons: {
+    icon: "/KS.png",
+    apple: "/KS.png",
+    shortcut: "/KS.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

@@ -3,7 +3,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { DEFAULT_PROFILE, DEFAULT_SETTINGS, MEAL_ORDER, STORAGE_KEY } from "@/lib/constants";
+import { DEFAULT_PROFILE, DEFAULT_SETTINGS, MEAL_ORDER, SINGLE_USER_PROFILE, STORAGE_KEY } from "@/lib/constants";
 import { getTodayKey } from "@/lib/date";
 import { summarizeDayLog, scaleNutrients, ZERO_NUTRIENTS } from "@/lib/nutrients";
 import { createId } from "@/lib/utils";
@@ -29,6 +29,7 @@ type StoreState = {
   healthDocuments: HealthDocument[];
   setSelectedDate: (date: string) => void;
   ensureDay: (date: string) => void;
+  updateSettings: (settings: Partial<UserSettings>) => void;
   updateProfile: (profile: UserProfile) => void;
   saveProfileSnapshot: () => void;
   deleteProfileSnapshot: (snapshotId: string) => void;
@@ -89,6 +90,21 @@ function recalculate(dayLog: DayLog): DayLog {
   };
 }
 
+function normalizeSingleUserProfile(profile?: Partial<UserProfile>): UserProfile {
+  return {
+    ...DEFAULT_PROFILE,
+    ...profile,
+    ...SINGLE_USER_PROFILE
+  };
+}
+
+function normalizeSettings(settings?: Partial<UserSettings>): UserSettings {
+  return {
+    ...DEFAULT_SETTINGS,
+    ...settings
+  };
+}
+
 export const useFoodLogStore = create<StoreState>()(
   persist(
     (set, get) => ({
@@ -116,10 +132,18 @@ export const useFoodLogStore = create<StoreState>()(
           };
         });
       },
+      updateSettings: (settings) => {
+        set((state) => ({
+          settings: normalizeSettings({
+            ...state.settings,
+            ...settings
+          })
+        }));
+      },
       updateProfile: (profile) => {
         set({
           profile: {
-            ...profile,
+            ...normalizeSingleUserProfile(profile),
             updatedAt: new Date().toISOString()
           }
         });
@@ -342,6 +366,16 @@ export const useFoodLogStore = create<StoreState>()(
     {
       name: STORAGE_KEY,
       storage: createJSONStorage(() => localStorage),
+      merge: (persistedState, currentState) => {
+        const persisted = persistedState as Partial<StoreState> | undefined;
+
+        return {
+          ...currentState,
+          ...persisted,
+          settings: normalizeSettings(persisted?.settings),
+          profile: normalizeSingleUserProfile(persisted?.profile)
+        };
+      },
       partialize: (state) => ({
         dayLogs: state.dayLogs,
         selectedDate: state.selectedDate,

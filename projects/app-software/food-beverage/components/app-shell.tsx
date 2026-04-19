@@ -14,8 +14,7 @@ export function AppShell({ children, currentPath = "/" }: AppShellProps) {
     <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pb-[calc(6.5rem+env(safe-area-inset-bottom))] pt-[calc(1.25rem+env(safe-area-inset-top))] sm:max-w-3xl sm:px-6 lg:max-w-5xl">
       <header className="mb-5 flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase text-muted-foreground">Food Journal</p>
-          <h1 className="mt-2 text-[1.65rem] font-semibold leading-tight tracking-tight sm:text-3xl">Cibo, acqua e bevande</h1>
+          <h1 className="text-[1.65rem] font-semibold leading-tight tracking-tight sm:text-3xl">Food Journal</h1>
         </div>
         <div className="hidden rounded-lg border border-border bg-card p-1 sm:flex">
           <NavLink href="/" active={currentPath === "/"}>

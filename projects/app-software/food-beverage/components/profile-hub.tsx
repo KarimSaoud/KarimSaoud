@@ -1,19 +1,18 @@
 "use client";
 
 import { ChangeEvent, ReactNode, useEffect, useMemo, useState } from "react";
-import { FileArchive, History, Save, Trash2, UserRound } from "lucide-react";
+import { FileArchive, Save, Trash2, UserRound } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { calculateAgeFromBirthDate, formatDateTime } from "@/lib/date";
-import { formatFileSize, formatNumber } from "@/lib/utils";
+import { formatFileSize } from "@/lib/utils";
 import { useFoodLogStore } from "@/store/use-food-log-store";
 import { HealthDocument, UserProfile } from "@/types";
 
 type NumericProfileField =
-  | "heightCm"
   | "weightKg"
   | "goalWeightKg"
   | "leanMassKg"
@@ -26,7 +25,6 @@ const metricFields: Array<{
   label: string;
   suffix: string;
 }> = [
-  { key: "heightCm", label: "Altezza", suffix: "cm" },
   { key: "weightKg", label: "Peso", suffix: "kg" },
   { key: "goalWeightKg", label: "Obiettivo peso", suffix: "kg" },
   { key: "leanMassKg", label: "Massa magra", suffix: "kg" },
@@ -55,10 +53,9 @@ function readFileAsDataUrl(file: File) {
 
 export function ProfileHub() {
   const storedProfile = useFoodLogStore((state) => state.profile);
-  const measurementHistory = useFoodLogStore((state) => state.measurementHistory);
   const healthDocuments = useFoodLogStore((state) => state.healthDocuments);
   const updateProfile = useFoodLogStore((state) => state.updateProfile);
-  const deleteProfileSnapshot = useFoodLogStore((state) => state.deleteProfileSnapshot);
+  const saveProfileSnapshot = useFoodLogStore((state) => state.saveProfileSnapshot);
   const addHealthDocument = useFoodLogStore((state) => state.addHealthDocument);
   const removeHealthDocument = useFoodLogStore((state) => state.removeHealthDocument);
 
@@ -73,15 +70,6 @@ export function ProfileHub() {
 
   const age = useMemo(() => calculateAgeFromBirthDate(profile.birthDate), [profile.birthDate]);
 
-  const handleTextChange =
-    (field: "firstName" | "lastName" | "birthDate") => (event: ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value;
-      setProfile((current) => ({
-        ...current,
-        [field]: value
-      }));
-    };
-
   const handleNumberChange = (field: NumericProfileField) => (event: ChangeEvent<HTMLInputElement>) => {
     setProfile((current) => ({
       ...current,
@@ -91,11 +79,7 @@ export function ProfileHub() {
 
   const handleSaveProfile = () => {
     updateProfile(profile);
-  };
-
-  const handleSaveSnapshot = () => {
-    updateProfile(profile);
-    useFoodLogStore.getState().saveProfileSnapshot();
+    saveProfileSnapshot();
   };
 
   const handleDocumentUpload = async () => {
@@ -128,128 +112,57 @@ export function ProfileHub() {
           <UserRound className="mr-2 h-4 w-4" />
           Profilo
         </TabsTrigger>
-        <TabsTrigger value="history">
-          <History className="mr-2 h-4 w-4" />
-          Storico
-        </TabsTrigger>
         <TabsTrigger value="documents">
           <FileArchive className="mr-2 h-4 w-4" />
           Documenti
         </TabsTrigger>
       </TabsList>
 
-      <TabsContent value="profile" className="grid gap-4 xl:grid-cols-[1.35fr_0.9fr]">
+      <TabsContent value="profile">
         <Card>
           <CardHeader>
-            <CardTitle>Dati personali e composizione</CardTitle>
-            <CardDescription>Età calcolata in automatico dalla data di nascita aggiornata alla data attuale.</CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4 sm:grid-cols-2">
-            <Field label="Nome">
-              <Input value={profile.firstName} onChange={handleTextChange("firstName")} placeholder="Nome" />
-            </Field>
-            <Field label="Cognome">
-              <Input value={profile.lastName} onChange={handleTextChange("lastName")} placeholder="Cognome" />
-            </Field>
-            <Field label="Data di nascita">
-              <Input type="date" value={profile.birthDate} onChange={handleTextChange("birthDate")} />
-            </Field>
-            <Field label="Età">
-              <Input value={age ?? ""} readOnly placeholder="Calcolata automaticamente" />
-            </Field>
-            {metricFields.map((field) => (
-              <Field key={field.key} label={field.label}>
-                <div className="relative">
-                  <Input
-                    type="number"
-                    inputMode="decimal"
-                    step="0.1"
-                    value={profile[field.key] ?? ""}
-                    onChange={handleNumberChange(field.key)}
-                    className="pr-14"
-                  />
-                  <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
-                    {field.suffix}
-                  </span>
-                </div>
-              </Field>
-            ))}
-            <div className="sm:col-span-2 flex flex-col gap-3 sm:flex-row">
-              <Button onClick={handleSaveProfile}>
-                <Save className="mr-2 h-4 w-4" />
-                Salva profilo
-              </Button>
-              <Button variant="outline" onClick={handleSaveSnapshot}>
-                <History className="mr-2 h-4 w-4" />
-                Salva nello storico
-              </Button>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <CardTitle>{`${profile.firstName} ${profile.lastName}`.trim()}</CardTitle>
+                <CardDescription>
+                  {profile.birthPlace}, 17/06/1995 · {profile.heightCm} cm
+                </CardDescription>
+              </div>
+              <div className="rounded-lg bg-secondary px-4 py-3 text-sm">
+                <span className="text-muted-foreground">Età</span>
+                <span className="ml-2 font-semibold">{age === null ? "—" : `${age} anni`}</span>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Riepilogo rapido</CardTitle>
-            <CardDescription>Vista sintetica dell&apos;anagrafica e degli obiettivi correnti.</CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-3">
-            <SummaryRow label="Persona" value={`${profile.firstName} ${profile.lastName}`.trim() || "Non compilato"} />
-            <SummaryRow label="Età" value={age === null ? "—" : `${age} anni`} />
-            <SummaryRow
-              label="Peso attuale / obiettivo"
-              value={formatMetricPair(profile.weightKg, profile.goalWeightKg)}
-            />
-            <SummaryRow
-              label="Massa magra / obiettivo"
-              value={formatMetricPair(profile.leanMassKg, profile.goalLeanMassKg)}
-            />
-            <SummaryRow
-              label="Massa grassa / obiettivo"
-              value={formatMetricPair(profile.fatMassKg, profile.goalFatMassKg)}
-            />
-            <SummaryRow
-              label="Ultimo aggiornamento"
-              value={storedProfile.updatedAt ? formatDateTime(storedProfile.updatedAt) : "Non ancora salvato"}
-            />
-          </CardContent>
-        </Card>
-      </TabsContent>
-
-      <TabsContent value="history">
-        <Card>
-          <CardHeader>
-            <CardTitle>Storico misurazioni</CardTitle>
-            <CardDescription>Ogni salvataggio conserva una fotografia completa dei valori inseriti.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {measurementHistory.length === 0 ? (
-              <EmptyState text="Nessuna misurazione salvata nello storico." />
-            ) : (
-              measurementHistory.map((snapshot) => (
-                <div
-                  key={snapshot.id}
-                  className="flex flex-col gap-4 rounded-[24px] border border-border bg-white/70 p-4 lg:flex-row lg:items-center lg:justify-between"
-                >
-                  <div className="grid gap-2">
-                    <p className="font-medium">{formatDateTime(snapshot.savedAt)}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {snapshot.profile.firstName || snapshot.profile.lastName
-                        ? `${snapshot.profile.firstName} ${snapshot.profile.lastName}`.trim()
-                        : "Profilo senza nome"}
-                    </p>
-                    <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
-                      <BadgeText text={`Peso ${formatMetric(snapshot.profile.weightKg)}`} />
-                      <BadgeText text={`Magra ${formatMetric(snapshot.profile.leanMassKg)}`} />
-                      <BadgeText text={`Grassa ${formatMetric(snapshot.profile.fatMassKg)}`} />
+          <CardContent>
+            <div className="grid gap-5">
+              <section className="grid gap-4 rounded-lg border border-border bg-white/70 p-4 sm:grid-cols-2">
+                {metricFields.map((field) => (
+                  <Field key={field.key} label={field.label}>
+                    <div className="relative">
+                      <Input
+                        type="number"
+                        inputMode="decimal"
+                        step="0.1"
+                        value={profile[field.key] ?? ""}
+                        onChange={handleNumberChange(field.key)}
+                        className="pr-14"
+                      />
+                      <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
+                        {field.suffix}
+                      </span>
                     </div>
-                  </div>
-                  <Button variant="ghost" onClick={() => deleteProfileSnapshot(snapshot.id)}>
-                    <Trash2 className="mr-2 h-4 w-4" />
-                    Elimina
-                  </Button>
-                </div>
-              ))
-            )}
+                  </Field>
+                ))}
+              </section>
+
+              <div>
+                <Button onClick={handleSaveProfile}>
+                  <Save className="mr-2 h-4 w-4" />
+                  Salva profilo
+                </Button>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </TabsContent>
@@ -317,19 +230,6 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-function SummaryRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-[24px] bg-secondary/70 p-4">
-      <p className="text-sm text-muted-foreground">{label}</p>
-      <p className="mt-1 text-base font-semibold">{value}</p>
-    </div>
-  );
-}
-
-function BadgeText({ text }: { text: string }) {
-  return <span className="rounded-full bg-secondary px-3 py-1">{text}</span>;
-}
-
 function EmptyState({ text }: { text: string }) {
   return <div className="rounded-[24px] border border-dashed border-border bg-secondary/40 p-6 text-sm text-muted-foreground">{text}</div>;
 }
@@ -360,16 +260,4 @@ function DocumentRow({ document, onDelete }: { document: HealthDocument; onDelet
       </div>
     </div>
   );
-}
-
-function formatMetric(value: number | null) {
-  return value === null ? "—" : `${formatNumber(value, value % 1 === 0 ? 0 : 1)} kg`;
-}
-
-function formatMetricPair(current: number | null, goal: number | null) {
-  if (current === null && goal === null) {
-    return "—";
-  }
-
-  return `${formatMetric(current)} / ${formatMetric(goal)}`;
 }

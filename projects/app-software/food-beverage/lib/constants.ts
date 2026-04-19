@@ -23,15 +23,22 @@ export const DEFAULT_SETTINGS: UserSettings = {
   proteinTarget: 120,
   carbsTarget: 240,
   fatTarget: 70,
+  saturatedFatTarget: 22,
+  sugarsTarget: 50,
   fiberTarget: 28,
   waterTargetMl: 2000
 };
 
+export const SINGLE_USER_PROFILE: Pick<UserProfile, "firstName" | "lastName" | "birthDate" | "birthPlace" | "heightCm"> = {
+  firstName: "Karim",
+  lastName: "Saoud",
+  birthDate: "1995-06-17",
+  birthPlace: "Firenze",
+  heightCm: 180
+};
+
 export const DEFAULT_PROFILE: UserProfile = {
-  firstName: "",
-  lastName: "",
-  birthDate: "",
-  heightCm: null,
+  ...SINGLE_USER_PROFILE,
   weightKg: null,
   goalWeightKg: null,
   leanMassKg: null,
